@@ -1,0 +1,82 @@
+/* Install Roboto Fonts */
+body {
+	font-family: 'Roboto', sans-serif;
+}
+
+/* Navbar brand / judul web */
+.judulWeb {
+	font-weight: 500;
+}
+
+
+/* Menu navar ketika aktif */
+a.nav-item.nav-link.aktif {
+	color: #4893C0 !important;
+	border-bottom: 1px solid #4893C0 !important;
+}
+
+/* tombol */
+.radiusBorder {
+	border-radius: 25px;
+}
+
+/* subJudul */
+
+.subJudul span {
+	border-bottom: 2px solid #3A8BBB;
+	padding-bottom: 0.2em;
+}
+
+/* Background gambar untuk homepage */
+.s1-hero {
+	background: url('../img/s1_hero.jpg');
+	background-repeat: none;
+	background-size: cover;
+	height: 575px;
+	width: auto;
+
+}
+
+a:hover {
+	text-decoration: none !important;
+}
+
+/* Text color */
+.txtBlue {
+	color: #3A8BBB;
+}
+
+/* Background */
+.bgRed {
+	background: #FF5555;
+	color: #fff;
+}
+
+.bgBlue1 {
+	background: #00B6E3;
+	color: #fff;
+}
+
+.bgBlue2 {
+	background: #1DA1F2;
+	color: #fff;
+}
+
+.bgBlue3 {
+	background: #3A8BBB;
+	color: #fff;
+}
+
+/* Mengatur ukuran teks */
+.bigText {
+	font-size: 60px;
+}
+
+.medText {
+	font-size: 30px;
+}
+
+.smText {
+	font-size: 20px;
+	font-weight: 300;
+}
