@@ -34,6 +34,23 @@ a.nav-item.nav-link.aktif {
 	margin-bottom: 40px;
 }
 
+/* footer */
+.ulFooter {
+	list-style: none;
+	color: #fff;
+	padding-left: 0;
+}
+
+.listFooter {
+	font-weight: 300;
+	color: #fff;
+	padding: 5px;
+}
+
+.listFooter a {
+	color: #fff;
+}
+
 /* subJudul */
 
 .subJudul span {

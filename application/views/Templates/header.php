@@ -29,14 +29,14 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-item nav-link aktif" href="#">Home</a>
-					<a class="nav-item nav-link" href="#">Features</a>
-					<a class="nav-item nav-link" href="#">Pricing</a>
-					<a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+					<a class="nav-item nav-link aktif" href="#">Beranda</a>
+					<a class="nav-item nav-link" href="#">Cari Guru</a>
+					<a class="nav-item nav-link" href="#">Bantuan</a>
+					<a class="nav-item nav-link disabled" href="#">Tentang Kami</a>
 				</div>
 				<div class="navbar-nav ml-auto">
-					<a class="nav-item nav-link btn btn-outline-primary mx-2 px-5 radiusBorder" href="#">Home <span class="sr-only">(current)</span></a>
-					<a class="nav-item nav-link btn btn-primary mx-2 px-5 radiusBorder text-white" href="#">Features</a>
+					<a class="nav-item nav-link btn btn-outline-primary mx-2 px-5 radiusBorder" href="#">Login <span class="sr-only">(current)</span></a>
+					<a class="nav-item nav-link btn btn-primary mx-2 px-5 radiusBorder text-white" href="#">Register</a>
 				</div>
 			</div>
 		</div>
