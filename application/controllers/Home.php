@@ -10,6 +10,7 @@ class Home extends CI_Controller
         $this->load->view('Templates/header', $data);
         //$this->load->view('Templates/navbar');
         $this->load->view('Home/s1_hero.php');
+        $this->load->view('Home/s1_cariguru.php');
         $this->load->view('Home/s2_fitur.php');
         $this->load->view('Templates/footer');
     }

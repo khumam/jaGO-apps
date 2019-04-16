@@ -21,7 +21,7 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light shadow-sm sticky-top py-3" style="background:white">
+	<nav class="navbar navbar-expand-lg navbar-light shadow-sm sticky-top py-3" style="background:white">
 		<div class="container">
 			<a class="navbar-brand judulWeb" href="#">JaGO</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,6 +40,4 @@
 				</div>
 			</div>
 		</div>
-</nav>
-
-	
+	</nav>
