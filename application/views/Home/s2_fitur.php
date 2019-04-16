@@ -1,4 +1,4 @@
-<section id="fitur" class="mt-2">
+<section id="fitur" class="mt-2 mb-2 pb-5">
 	<div class="container py-5">
 		<h4 class="mb-3 text-center txtBlue subJudul">Fitur <span>JaGO</span></h4>
 

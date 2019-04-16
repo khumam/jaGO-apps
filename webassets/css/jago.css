@@ -20,6 +20,20 @@ a.nav-item.nav-link.aktif {
 	border-radius: 25px;
 }
 
+.noRadius {
+	border-radius: 0;
+}
+
+/* tawaran */
+.tawaranCard {
+	border-top-right-radius: 50px;
+	margin-bottom: 40px;
+}
+
+.mbMobile {
+	margin-bottom: 40px;
+}
+
 /* subJudul */
 
 .subJudul span {
@@ -102,4 +116,17 @@ a:hover {
 .smText {
 	font-size: 20px;
 	font-weight: 300;
+}
+
+/* responsive */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+	.mbMobile {
+		margin-bottom: 0px;
+	}
+
+	.tawaranCard {
+		border-top-right-radius: 50px;
+		margin-bottom: 0px;
+	}
 }
