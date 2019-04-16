@@ -8,6 +8,24 @@ body {
 	font-weight: 500;
 }
 
+/* hide on Mobile */
+.hideMobile {
+	display: none;
+}
+
+/* forms */
+.forms {
+	padding: 10px 20px;
+	line-height: 20px;
+	border: 1px solid #dddddd;
+	width: 300px;
+	background: #fff;
+
+}
+
+.select {
+	width: 300px;
+}
 
 /* Menu navar ketika aktif */
 a.nav-item.nav-link.aktif {
@@ -22,6 +40,10 @@ a.nav-item.nav-link.aktif {
 
 .noRadius {
 	border-radius: 0;
+}
+
+.tombol {
+	width: 300px;
 }
 
 /* tawaran */
@@ -97,7 +119,7 @@ a:hover {
 	transition: 0.3s;
 }
 
-a.btn:hover {
+a:hover.btn {
 	color: #fff;
 	transition: 0.3s;
 	border-radius: 25px;
@@ -143,17 +165,31 @@ a.btn:hover {
 	font-weight: 300;
 }
 
-/* login */
+.tnText {
+	font-size: 14px;
+	font-weight: 300;
+}
+
+
+/* login and register img */
 .loginImg {
 	background: url('../img/login.jpeg');
 	background-repeat: none;
 	background-size: cover;
-	height: 570px;
+	height: auto;
+	width: auto;
+}
+
+.regImg {
+	background: url('../img/login.jpeg');
+	background-repeat: none;
+	background-size: cover;
+	height: auto;
 	width: auto;
 }
 
 /* responsive */
-@media (min-width: 992px) and (max-width: 1199.98px) {
+@media (min-width: 992px) {
 
 	.mbMobile {
 		margin-bottom: 0px;
@@ -162,5 +198,22 @@ a.btn:hover {
 	.tawaranCard {
 		border-top-right-radius: 50px;
 		margin-bottom: 0px;
+	}
+
+	.hideMobile {
+		display: inline-block;
+	}
+
+	.forms {
+		padding: 10px 20px;
+		line-height: 20px;
+		border: 1px solid #dddddd;
+		width: 400px;
+		background: #fff;
+
+	}
+
+	.tombol {
+		width: 400px;
 	}
 }
