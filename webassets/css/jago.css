@@ -27,6 +27,29 @@ a.nav-item.nav-link.aktif {
 	padding-bottom: 0.2em;
 }
 
+/* fitur */
+.fiturCard {
+	padding: 40px;
+}
+
+.fiturCard img {
+	float: left;
+}
+
+.fiturCard h4 {
+	margin-left: 100px;
+	font-weight: 500;
+	margin-bottom: 10px;
+	font-size: 18px;
+}
+
+.fiturCard p {
+	font-size: 15px;
+	margin-left: 100px;
+	margin-bottom: 0;
+	line-height: 24px;
+}
+
 /* Background gambar untuk homepage */
 .s1-hero {
 	background: url('../img/s1_hero.jpg');
