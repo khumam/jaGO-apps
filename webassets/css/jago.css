@@ -93,6 +93,14 @@ a.nav-item.nav-link.aktif {
 
 a:hover {
 	text-decoration: none !important;
+	color: #fff;
+	transition: 0.3s;
+}
+
+a.btn:hover {
+	color: #fff;
+	transition: 0.3s;
+	border-radius: 25px;
 }
 
 /* Text color */
