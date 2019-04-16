@@ -85,6 +85,12 @@ a.nav-item.nav-link.aktif {
 	padding: 40px;
 }
 
+.fiturCard:hover {
+	transform: scale(1.1, 1.1);
+	transition: 0.3s;
+
+}
+
 .fiturCard img {
 	float: left;
 }
@@ -113,9 +119,10 @@ a.nav-item.nav-link.aktif {
 
 }
 
+/* link */
 a:hover {
 	text-decoration: none !important;
-	color: #fff;
+	color: #fff !important;
 	transition: 0.3s;
 }
 
@@ -123,6 +130,11 @@ a:hover.btn {
 	color: #fff;
 	transition: 0.3s;
 	border-radius: 25px;
+}
+
+button:hover {
+	color: white;
+
 }
 
 /* Text color */
@@ -198,6 +210,14 @@ a:hover.btn {
 	.tawaranCard {
 		border-top-right-radius: 50px;
 		margin-bottom: 0px;
+	}
+
+	.tawaranCard:hover {
+		transform: scale(1.1, 1.1);
+		transition: 0.3s;
+		-webkit-box-shadow: 3px 6px 39px -6px rgba(51, 0, 255, 1);
+		-moz-box-shadow: 3px 6px 39px -6px rgba(51, 0, 255, 1);
+		box-shadow: 3px 6px 39px -6px rgba(51, 0, 255, 1);
 	}
 
 	.hideMobile {
