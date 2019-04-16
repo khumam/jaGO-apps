@@ -143,6 +143,15 @@ a.btn:hover {
 	font-weight: 300;
 }
 
+/* login */
+.loginImg {
+	background: url('../img/login.jpeg');
+	background-repeat: none;
+	background-size: cover;
+	height: 570px;
+	width: auto;
+}
+
 /* responsive */
 @media (min-width: 992px) and (max-width: 1199.98px) {
 

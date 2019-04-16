@@ -15,4 +15,12 @@ class Home extends CI_Controller
         $this->load->view('Home/s4_howitworks.php');
         $this->load->view('Templates/footer');
     }
+
+    public function login()
+    {
+        $data['judul'] = "Login jaGO";
+        $this->load->view('Templates/header', $data);
+        $this->load->view('Login/s1_login');
+        $this->load->view('Templates/footer');
+    }
 }
