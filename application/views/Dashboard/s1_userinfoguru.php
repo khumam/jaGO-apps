@@ -26,8 +26,20 @@
 						<div class="col-6 bgRed">
 							<h6 class="text-center p-2">Logout</h6>
 						</div>
+						<div class="col-12 bgBlue2 hideDesktop">
+							<h6 class="text-center p-2">Tambah Jasa</h6>
+						</div>
 					</div>
 				</div>
+
+				<div class="notifikasi mt-5">
+					<div class="row align-items-center">
+						<div class="col-12">
+							<p class="notifikasiTeks p-2 align-middle">Pesanan baru <span class="float-right">(25 Pesanan)</span></p>
+						</div>
+					</div>
+				</div>
+
 			</div>
 
 			<!-- keterangan halaman  -->
@@ -68,6 +80,13 @@
 									<i class="fas fa-trash-alt"></i>
 								</div>
 							</div>
+						</div>
+					</div>
+
+					<!-- add new jasa -->
+					<div class="col-6 hideMobile">
+						<div class="cardMember text-center">
+							<i class="fas fa-plus" style="font-size: 150px; color: #ddd"></i>
 						</div>
 					</div>
 				</div>

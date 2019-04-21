@@ -13,6 +13,11 @@ body {
 	display: none;
 }
 
+/* hide on desktop */
+.hideDesktop {
+	display: inline-block;
+}
+
 /* forms */
 .forms {
 	padding: 10px 20px;
@@ -180,6 +185,18 @@ button:hover {
 	color: #fff;
 }
 
+/* notifikasi */
+.notifikasi {
+	border-top: 1px solid rgb(235, 235, 235);
+	border-right: 1px solid rgb(235, 235, 235);
+	border-left: 1px solid rgb(235, 235, 235);
+	border-bottom: 1px solid #5ED694;
+}
+
+.notifikasiTeks span {
+	color: #5ED694;
+}
+
 /* Mengatur ukuran teks */
 .bigText {
 	font-size: 60px;
@@ -273,6 +290,10 @@ button:hover {
 
 	.hideMobile {
 		display: inline-block;
+	}
+
+	.hideDesktop {
+		display: none;
 	}
 
 	.forms {
