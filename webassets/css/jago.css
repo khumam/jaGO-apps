@@ -37,6 +37,10 @@ a.nav-item.nav-link:hover {
 	color: #4893C0 !important;
 }
 
+a.navbar-brand:hover {
+	color: #4893C0 !important;
+}
+
 /* tombol */
 .radiusBorder {
 	border-radius: 25px;
@@ -58,6 +62,10 @@ a.nav-item.nav-link:hover {
 
 .mbMobile {
 	margin-bottom: 40px;
+}
+
+.mtMobile {
+	margin-top: 40px;
 }
 
 /* footer */
@@ -130,7 +138,7 @@ a:hover {
 	transition: 0.3s;
 }
 
-a:hover.btn {
+a.btn:hover {
 	color: #fff;
 	transition: 0.3s;
 	border-radius: 25px;
@@ -167,6 +175,11 @@ button:hover {
 	color: #fff;
 }
 
+.bgGreen {
+	background: #5ED694;
+	color: #fff;
+}
+
 /* Mengatur ukuran teks */
 .bigText {
 	font-size: 60px;
@@ -184,6 +197,36 @@ button:hover {
 .tnText {
 	font-size: 14px;
 	font-weight: 300;
+}
+
+/* user card */
+.userCard {
+	padding: 25px;
+	background: #fff;
+	border: 1px solid rgb(235, 235, 235);
+}
+
+.userCardBottom {
+	padding: 0px 15px;
+}
+
+.userCard img {
+	width: 100px;
+	height: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cardMember {
+	padding: 20px;
+	background: #fff;
+	border: 1px solid rgb(235, 235, 235);
+}
+
+.row.listItems {
+	border-bottom: 1px solid rgb(235, 235, 235);
+	margin-bottom: 5px;
 }
 
 
@@ -209,6 +252,10 @@ button:hover {
 
 	.mbMobile {
 		margin-bottom: 0px;
+	}
+
+	.mtMobile {
+		margin-top: 0px;
 	}
 
 	.tawaranCard {

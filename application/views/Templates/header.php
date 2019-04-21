@@ -18,6 +18,9 @@
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
 	<!-- Title -->
 	<title><?php echo $judul; ?></title>
 </head>
