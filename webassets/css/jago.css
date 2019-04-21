@@ -33,6 +33,10 @@ a.nav-item.nav-link.aktif {
 	border-bottom: 1px solid #4893C0 !important;
 }
 
+a.nav-item.nav-link:hover {
+	color: #4893C0 !important;
+}
+
 /* tombol */
 .radiusBorder {
 	border-radius: 25px;
