@@ -31,4 +31,12 @@ class Home extends CI_Controller
         $this->load->view('Register/s1_register');
         $this->load->view('Templates/footer');
     }
+
+    public function aboutus()
+    {
+        $data['judul'] = "Tentang JaGO";
+        $this->load->view('Templates/header', $data);
+        $this->load->view('About/index');
+        $this->load->view('Templates/footer');
+    }
 }

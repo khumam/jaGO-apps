@@ -38,7 +38,7 @@
 					<a class="nav-item nav-link aktif" href="#">Beranda</a>
 					<a class="nav-item nav-link" href="#">Cari Guru</a>
 					<a class="nav-item nav-link" href="#">Bantuan</a>
-					<a class="nav-item nav-link" href="#">Tentang Kami</a>
+					<a class="nav-item nav-link" href="<?php echo base_url('home/aboutus'); ?>">Tentang Kami</a>
 				</div>
 				<div class="navbar-nav ml-auto">
 					<a class="nav-item nav-link btn btn-outline-primary mx-2 px-5 radiusBorder" href="<?php echo base_url('home/login'); ?>">Login <span class="sr-only">(current)</span></a>
