@@ -35,14 +35,22 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-item nav-link aktif" href="#">Beranda</a>
-					<a class="nav-item nav-link" href="#">Cari Guru</a>
-					<a class="nav-item nav-link" href="<?php echo base_url('home/bantuan'); ?>">Bantuan</a>
-					<a class="nav-item nav-link" href="<?php echo base_url('home/aboutus'); ?>">Tentang Kami</a>
+					<a class="nav-item nav-link <?php if (current_url() == base_url()."index.php") {
+													echo "aktif";
+												} ?>" href="<?php echo base_url(); ?>">Beranda</a>
+					<a class="nav-item nav-link <?php if (preg_match('/cariguru/', current_url())) {
+													echo "aktif";
+												} ?>" href="#">Cari Guru</a>
+					<a class="nav-item nav-link <?php if (preg_match('/home\/bantuan/', current_url())) {
+													echo "aktif";
+												} ?>"" href=" <?php echo base_url('home/bantuan'); ?>">Bantuan</a>
+					<a class="nav-item nav-link <?php if (preg_match('/home\/aboutus/', current_url())) {
+													echo "aktif";
+												} ?>"" href=" <?php echo base_url('home/aboutus'); ?>">Tentang Kami</a>
 				</div>
 				<div class="navbar-nav ml-auto">
-					<a class="nav-item nav-link btn btn-border-blue2 mx-2 px-5 radiusBorder" href="<?php echo base_url('home/login'); ?>">Login <span class="sr-only">(current)</span></a>
-					<a class="nav-item nav-link btn bgBlue2 mx-2 px-5 radiusBorder text-white" href="<?php echo base_url('home/register'); ?>">Register</a>
+					<a class="mtMobile nav-item nav-link btn btn-border-blue2 mx-2 px-5 radiusBorder" href="<?php echo base_url('home/login'); ?>">Login <span class="sr-only">(current)</span></a>
+					<a class="mtMobile mbMobile nav-item nav-link btn bgBlue2 mx-2 px-5 radiusBorder text-white" href="<?php echo base_url('home/register'); ?>">Register</a>
 				</div>
 			</div>
 		</div>
