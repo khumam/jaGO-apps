@@ -37,12 +37,12 @@
 				<div class="navbar-nav">
 					<a class="nav-item nav-link aktif" href="#">Beranda</a>
 					<a class="nav-item nav-link" href="#">Cari Guru</a>
-					<a class="nav-item nav-link" href="#">Bantuan</a>
+					<a class="nav-item nav-link" href="<?php echo base_url('home/bantuan'); ?>">Bantuan</a>
 					<a class="nav-item nav-link" href="<?php echo base_url('home/aboutus'); ?>">Tentang Kami</a>
 				</div>
 				<div class="navbar-nav ml-auto">
-					<a class="nav-item nav-link btn btn-outline-primary mx-2 px-5 radiusBorder" href="<?php echo base_url('home/login'); ?>">Login <span class="sr-only">(current)</span></a>
-					<a class="nav-item nav-link btn btn-primary mx-2 px-5 radiusBorder text-white" href="<?php echo base_url('home/register'); ?>">Register</a>
+					<a class="nav-item nav-link btn btn-border-blue2 mx-2 px-5 radiusBorder" href="<?php echo base_url('home/login'); ?>">Login <span class="sr-only">(current)</span></a>
+					<a class="nav-item nav-link btn bgBlue2 mx-2 px-5 radiusBorder text-white" href="<?php echo base_url('home/register'); ?>">Register</a>
 				</div>
 			</div>
 		</div>

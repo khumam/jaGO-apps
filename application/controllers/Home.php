@@ -39,4 +39,12 @@ class Home extends CI_Controller
         $this->load->view('About/index');
         $this->load->view('Templates/footer');
     }
+
+    public function bantuan()
+    {
+        $data['judul'] = "Tentang JaGO";
+        $this->load->view('Templates/header', $data);
+        $this->load->view('About/bantuan');
+        $this->load->view('Templates/footer');
+    }
 }

@@ -137,26 +137,40 @@ a.navbar-brand:hover {
 }
 
 /* link */
+
 a:hover {
-	text-decoration: none !important;
-	color: #fff !important;
+	text-decoration: underline;
+	color: #00B6E3 !important;
 	transition: 0.3s;
 }
 
-a.btn:hover {
-	color: #fff;
-	transition: 0.3s;
-	border-radius: 25px;
-}
-
-button:hover {
-	color: white;
+.button:hover {
+	color: white !important;
 
 }
 
 /* Text color */
+
 .txtBlue {
 	color: #3A8BBB;
+}
+
+/* border btn */
+
+.btn-border-blue2 {
+	border: 1px solid #1DA1F2;
+}
+
+.btn-border-blue2:hover {
+	border: 1px solid #1DA1F2;
+	background: #1DA1F2;
+	color: #fff;
+}
+
+/* login and register hover */
+.navbar-nav.nav-link.bgBlue2:hover{
+	background: #1DA1F2;
+	color: #fff;
 }
 
 /* Background */
