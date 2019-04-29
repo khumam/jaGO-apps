@@ -3,7 +3,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Home extends CI_Controller
 {
-
+    public function __construct(){
+        parent::__construct();
+        $this->load->library('form_validation');
+    }
     public function index()
     {
         $data['judul'] = "Menjadi jaGO";
@@ -27,9 +30,23 @@ class Home extends CI_Controller
     public function register()
     {
         $data['judul'] = "Register jaGO";
-        $this->load->view('Templates/header', $data);
-        $this->load->view('Register/s1_register');
-        $this->load->view('Templates/footer');
+
+        //Rules
+        $this->form_validation->set_rules('nama', 'Name', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('jenisMember', 'Member', 'required');
+
+
+        
+        if ($this->form_validation->run() == FALSE){
+            $this->load->view('Templates/header', $data);
+            $this->load->view('Register/s1_register');
+            $this->load->view('Templates/footer');
+        } else {
+            echo "success register";
+        }
     }
 
     public function aboutus()

@@ -28,6 +28,15 @@ body {
 
 }
 
+.forms200 {
+	padding: 10px 20px;
+	line-height: 20px;
+	border: 1px solid #dddddd;
+	width: 200px;
+	background: #fff;
+
+}
+
 .select {
 	width: 300px;
 }
@@ -39,7 +48,7 @@ a.nav-item.nav-link.aktif {
 }
 
 a.nav-item.nav-link:hover {
-	color: #4893C0 !important;
+	color: #4893C0;
 }
 
 a.navbar-brand:hover {
@@ -139,15 +148,27 @@ a.navbar-brand:hover {
 /* link */
 
 a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 	color: #00B6E3 !important;
 	transition: 0.3s;
 }
 
-.button:hover {
+button:hover {
 	color: white !important;
+	background: #3A8BBB;
 
 }
+
+.btnHover:hover{
+	color: white !important;
+	background: #3A8BBB;
+}
+
+/* centerMobile */
+.centerMobile {
+	text-align: center;
+}
+
 
 /* Text color */
 
@@ -164,14 +185,13 @@ a:hover {
 .btn-border-blue2:hover {
 	border: 1px solid #1DA1F2;
 	background: #1DA1F2;
-	color: #fff;
 }
 
 /* login and register hover */
-.navbar-nav.nav-link.bgBlue2:hover{
+/* .navbar-nav.nav-link.bgBlue2:hover {
 	background: #1DA1F2;
 	color: #fff;
-}
+} */
 
 /* Background */
 .bgRed {
@@ -319,7 +339,18 @@ a:hover {
 
 	}
 
+	.forms200 {
+		padding: 13px 20px;
+		line-height: 20px;
+		border: 1px solid #dddddd;
+		width: 200px;
+		background: #fff;
+
+	}
+
 	.tombol {
 		width: 400px;
 	}
+
+	.centerMobile {}
 }
