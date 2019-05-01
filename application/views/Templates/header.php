@@ -48,10 +48,26 @@
 													echo "aktif";
 												} ?>"" href=" <?php echo base_url('home/aboutus'); ?>">Tentang Kami</a>
 				</div>
-				<div class="navbar-nav ml-auto">
-					<a class="mtMobile nav-item nav-link btn btn-border-blue2 mx-2 px-5 radiusBorder btnHover" href="<?php echo base_url('home/login'); ?>">Login</a>
-					<a class="mtMobile mbMobile nav-item nav-link btn bgBlue2 mx-2 px-5 radiusBorder text-white btnHover" href="<?php echo base_url('home/register'); ?>">Register</a>
-				</div>
+
+				<?php if (!$this->session->userdata('email')) : ?>
+					<div class="navbar-nav ml-auto">
+						<a class="mtMobile nav-item nav-link btn btn-border-blue2 mx-2 px-5 radiusBorder btnHover" href="<?php echo base_url('home/login'); ?>">Login</a>
+						<a class="mtMobile mbMobile nav-item nav-link btn bgBlue2 mx-2 px-5 radiusBorder text-white btnHover" href="<?php echo base_url('home/register'); ?>">Register</a>
+					</div>
+				<?php endif; ?>
+				<?php if ($this->session->userdata('email')) : ?>
+					<div class="navbar-nav ml-auto">
+						<a class="mtMobile mbMobile nav-item nav-link btn bgBlue2 mx-2 px-5 radiusBorder text-white btnHover" href="<?php echo base_url('dashboard'); ?>">Dashboard</a>
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	</nav>
+
+	<?php if ($this->session->flashdata('danger')) : ?>
+		<p class="text-center mt-3 smText text-danger"><?php echo $this->session->flashdata('danger'); ?></p>
+	<?php endif; ?>
+
+	<?php if ($this->session->flashdata('success')) : ?>
+		<p class="text-center mt-3 smText text-success"><?php echo $this->session->flashdata('success'); ?></p>
+	<?php endif; ?>

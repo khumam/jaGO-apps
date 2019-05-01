@@ -8,7 +8,7 @@
 				<p class="smText">Masuk untuk mulai menggunakan JaGO</p>
 
 				<div class="container mt-5">
-					<form action="" method="">
+					<form action="<?php base_url('home/login'); ?>" method="post">
 						<label for="email">Email</label><br>
 						<input id="email" name="email" placeholder="Email" class="forms" type="email"><br>
 						<label for="pass" class="mt-5">Password</label><br>

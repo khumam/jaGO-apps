@@ -145,6 +145,12 @@ a.navbar-brand:hover {
 
 }
 
+/* Google Maps */
+#map_validasi {
+	width: 400px;
+	height: 500px;
+}
+
 /* link */
 
 a:hover {
@@ -159,7 +165,7 @@ button:hover {
 
 }
 
-.btnHover:hover{
+.btnHover:hover {
 	color: white !important;
 	background: #3A8BBB;
 }

@@ -7,8 +7,8 @@
 			<div class="col-sm-5">
 				<div class="userCard">
 					<img src="<?php echo base_url('webassets/img/icons/location.svg'); ?>">
-					<h5 class="text-center mt-4">Nama User</h5>
-					<p class="text-center mb-5">Bio</p>
+					<h5 class="text-center mt-4"><?php echo $dataMember['nama']; ?></h5>
+					<p class="text-center mb-5"><?php echo $dataMember['bio']; ?></p>
 					<div class="row">
 						<div class="col">
 							<h6>Teks 1</h6>
@@ -20,11 +20,13 @@
 				</div>
 				<div class="userCardBottom">
 					<div class="row align-items-center">
-						<div class="col-6 bgGreen">
-							<h6 class="text-center p-2">Edit Profil</h6>
-						</div>
+					<div class="col-6 bgGreen">
+                            <a data-toggle="modal" data-target="#modalEdit"><h6 class="text-center p-2">Launch demo modal</h6></a>
+                        </div>
 						<div class="col-6 bgRed">
-							<h6 class="text-center p-2">Logout</h6>
+							<a href="<?php echo base_url('home/logout'); ?>">
+								<h6 class="text-center p-2">Logout</h6>
+							</a>
 						</div>
 						<div class="col-12 bgBlue2 hideDesktop">
 							<h6 class="text-center p-2">Tambah Jasa</h6>

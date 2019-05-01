@@ -7,24 +7,28 @@
             <div class="col-sm-5">
                 <div class="userCard">
                     <img src="<?php echo base_url('webassets/img/icons/location.svg'); ?>">
-                    <h5 class="text-center mt-4">Nama User</h5>
-                    <p class="text-center mb-5">Bio</p>
-                    <div class="row">
-                        <div class="col">
-                            <h6>Teks 1</h6>
+                    <h5 class="text-center mt-4"><?php echo $dataMember['nama']; ?></h5>
+                    <p class="text-center mb-5"><?php echo $dataMember['bio']; ?></p>
+                    <p class="text-center"><?php if ($dataMember['lokasi'] == "") echo "Mohon isi alamat Anda. Klik Sunting Profil";
+                                            else echo $dataMember['lokasi']; ?></p>
+                    <?php if ($dataMember['lat'] == 0 && $dataMember['lon'] == 0 && $dataMember['lokasi'] != "") : ?>
+
+                        <div class="text-center">
+                            <a class="btn bgGreen noRadius btnHover text-white" data-toggle="modal" data-target="#modalValidasiMap">Validasi Alamat</a>
                         </div>
-                        <div class="col">
-                            <p class="float-right">Teks 1</p>
-                        </div>
-                    </div>
+                    <?php endif; ?>
                 </div>
                 <div class="userCardBottom">
                     <div class="row align-items-center">
                         <div class="col-6 bgGreen">
-                            <h6 class="text-center p-2">Edit Profil</h6>
+                            <a data-toggle="modal" data-target="#modalEdit">
+                                <h6 class="text-center p-2">Sunting Profil</h6>
+                            </a>
                         </div>
                         <div class="col-6 bgRed">
-                            <h6 class="text-center p-2">Logout</h6>
+                            <a href="<?php echo base_url('home/logout'); ?>">
+                                <h6 class="text-center p-2">Logout</h6>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -64,3 +68,18 @@
 
     </div>
 </section>
+
+
+<script>
+    x = navigator.geolocation;
+    x.getCurrentPosition(success, failure);
+
+    function success(position) {
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        $('#lat').html(lat);
+        $('#lon').html(lon);
+    }
+
+    function failure() {}
+</script>
