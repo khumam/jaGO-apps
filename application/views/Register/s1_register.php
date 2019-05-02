@@ -25,7 +25,7 @@
                             <option value="3">Guru</option>
                         </select><br>
                         <button class="btn tombol bgBlue2 mt-5 noRadius" type="submit">Register</button>
-                        <p class="mt-4 text-center tnText lead">Sudah punya akun? <a href="">Klik di sini untuk login</a></p>
+                        <p class="mt-4 text-center tnText lead">Sudah punya akun? <a href="<?php echo base_url('home/login'); ?>">Klik di sini untuk login</a></p>
                     </form>
                 </div>
             </div>
