@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row align-items-center" style="margin-top: -5.95em;">
         <div class="col-sm-4 bgRed text-center p-3 wow fadeInLeft">
-            <h5 class="my-auto">Ingin menjadi guru? klik di sini</h5>
+            <h5 class="my-auto">Ingin menjadi guru?<a class="text-white" href="<?php echo base_url('home/register'); ?>"> Klik di sini </a></h5>
         </div>
     </div>
 </div>

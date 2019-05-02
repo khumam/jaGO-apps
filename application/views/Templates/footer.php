@@ -4,18 +4,18 @@
 			<div class="col-6 col-lg-3 mbMobile">
 				<h4>Tentang Kami</h4>
 				<ul class="ulFooter">
-					<li class="listFooter"><a href="">About Us</a></li>
+					<li class="listFooter"><a href="<?php echo base_url('home/aboutus'); ?>">About Us</a></li>
 					<li class="listFooter"><a href="">Testimonial</a></li>
-					<li class="listFooter"><a href="">Bantuan</a></li>
+					<li class="listFooter"><a href="<?php echo base_url('home/bantuan'); ?>">Bantuan</a></li>
 				</ul>
 			</div>
 			<div class="col-6 col-lg-3 mbMobile">
 				<h4>Menu</h4>
 				<ul class="ulFooter">
-					<li class="listFooter"><a href="">Beranda</a></li>
-					<li class="listFooter"><a href="">Cari Guru</a></li>
-					<li class="listFooter"><a href="">Login</a></li>
-					<li class="listFooter"><a href="">Register</a></li>
+					<li class="listFooter"><a href="<?php echo base_url('home'); ?>">Beranda</a></li>
+					<li class="listFooter"><a href="<?php echo base_url('cari/cariguru'); ?>">Cari Guru</a></li>
+					<li class="listFooter"><a href="<?php echo base_url('home/login'); ?>">Login</a></li>
+					<li class="listFooter"><a href="<?php echo base_url('home/register'); ?>">Register</a></li>
 				</ul>
 			</div>
 			<div class="col-6 col-lg-3">
