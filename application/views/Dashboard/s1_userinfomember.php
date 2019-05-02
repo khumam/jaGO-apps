@@ -68,18 +68,3 @@
 
     </div>
 </section>
-
-
-<script>
-    x = navigator.geolocation;
-    x.getCurrentPosition(success, failure);
-
-    function success(position) {
-        var lat = position.coords.latitude;
-        var lon = position.coords.longitude;
-        $('#lat').html(lat);
-        $('#lon').html(lon);
-    }
-
-    function failure() {}
-</script>

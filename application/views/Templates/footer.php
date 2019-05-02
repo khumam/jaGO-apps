@@ -59,37 +59,9 @@
 <script>
 	new WOW().init();
 </script>
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBguq7YRxB7qXKGRrVrJzUXJ-Dyhxq_sw4&callback=initMap" async defer></script>
-
-<script>
-	function initMap() {
-
-		map = new google.maps.Map(document.getElementById('map_validasi'), {
-			center: {
-				lat: -7.0512269,
-				lng: 110.3893301
-			},
-			zoom: 12
-		});
-
-		var marker = new google.maps.Marker({
-			position: {
-				lat: -7.0512269,
-				lng: 110.3893301
-			},
-			map: map,
-			draggable: true,
-		});
-
-		google.maps.event.addListener(myMarker, 'dragend', function(evt) {
-			document.getElementById('current').innerHTML = '<p>Marker dropped: Current Lat: ' + evt.latLng.lat().toFixed(3) + ' Current Lng: ' + evt.latLng.lng().toFixed(3) + '</p>';
-		});
-
-		google.maps.event.addListener(myMarker, 'dragstart', function(evt) {
-			document.getElementById('current').innerHTML = '<p>Currently dragging marker...</p>';
-		});
-	}
-</script>
+<script src="<?php echo base_url('webassets/js/google_maps.js'); ?>"></script>
 </body>
 
 </html>
