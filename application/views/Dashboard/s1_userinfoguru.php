@@ -9,7 +9,16 @@
 					<img src="<?php echo base_url('webassets/img/icons/location.svg'); ?>">
 					<h5 class="text-center mt-4"><?php echo $dataMember['nama']; ?></h5>
 					<p class="text-center mb-5"><?php echo $dataMember['bio']; ?></p>
-					<div class="row">
+					<p class="text-center"><?php if ($dataMember['lokasi'] == "") echo "Mohon isi alamat Anda. Klik Sunting Profil";
+											else echo $dataMember['lokasi']; ?></p>
+					<?php if ($dataMember['lat'] == 0 && $dataMember['lon'] == 0 && $dataMember['lokasi'] != "") : ?>
+
+						<div class="text-center">
+							<a class="btn bgGreen noRadius btnHover text-white" href="<?php echo base_url('dashboard/validasialamat'); ?>">Validasi Alamat</a>
+						</div>
+					<?php endif; ?>
+
+					<div class="row mt-4">
 						<div class="col">
 							<h6>Teks 1</h6>
 						</div>
@@ -20,11 +29,13 @@
 				</div>
 				<div class="userCardBottom">
 					<div class="row align-items-center">
-					<div class="col-6 bgGreen">
-                            <a data-toggle="modal" data-target="#modalEdit"><h6 class="text-center p-2">Launch demo modal</h6></a>
-                        </div>
-						<div class="col-6 bgRed">
-							<a href="<?php echo base_url('home/logout'); ?>">
+						<div class="col-6 bgGreen btnHover">
+							<a data-toggle="modal" data-target="#modalEdit" class="linkWhite">
+								<h6 class="text-center p-2">Sunting Profil</h6>
+							</a>
+						</div>
+						<div class="col-6 bgRed btnHover">
+							<a href="<?php echo base_url('home/logout'); ?>" class="linkWhite">
 								<h6 class="text-center p-2">Logout</h6>
 							</a>
 						</div>
@@ -88,7 +99,7 @@
 					<!-- add new jasa -->
 					<div class="col-6 hideMobile">
 						<div class="cardMember text-center">
-							<i class="fas fa-plus" style="font-size: 150px; color: #ddd"></i>
+							<a href="<?php echo base_url('dashboard/addJasa'); ?>"><i class="fas fa-plus" style="font-size: 150px; color: #ddd"></i></a>
 						</div>
 					</div>
 				</div>

@@ -9,6 +9,7 @@ class Dashboard extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('Member_model');
+        $this->load->model('Jasa_model');
     }
 
     public function index()
@@ -34,9 +35,38 @@ class Dashboard extends CI_Controller
     {
         $data['judul'] = "Menjadi jaGO";
         $data['dataMember'] = $this->Member_model->getMemberDataBy('email', $this->session->userdata('email'));
-        $this->load->view('Templates/header', $data);
-        $this->load->view('Dashboard/map', $data);
-        $this->load->view('Templates/footer');
+
+        $this->form_validation->set_rules('lat', 'Latitude', 'required');
+        $this->form_validation->set_rules('lon', 'Langitude', 'required');
+
+        if ($this->form_validation->run() == false) {
+
+            $this->load->view('Templates/header', $data);
+            $this->load->view('Dashboard/map', $data);
+            $this->load->view('Templates/footer');
+        } else {
+
+            $insertLatLon = $this->Member_model->insertLatLon();
+
+            if ($insertLatLon == true) {
+                $this->session->set_flashdata('success', 'Alamat berhasil divalidasi');
+                if ($this->session->userdata('role') == 2) {
+                    redirect('dashboard');
+                }
+                if ($this->session->userdata('role') == 3) {
+                    redirect('dashboard/guru');
+                }
+            }
+            if ($insertLatLon == false) {
+                $this->session->set_flashdata('danger', 'Alamat gagal divalidasi. Lengkapi alamat Anda');
+                if ($this->session->userdata('role') == 2) {
+                    redirect('dashboard');
+                }
+                if ($this->session->userdata('role') == 3) {
+                    redirect('dashboard/guru');
+                }
+            }
+        }
     }
 
     public function guru()
@@ -48,25 +78,52 @@ class Dashboard extends CI_Controller
             $this->load->view('Templates/header', $data);
             $this->load->view('Dashboard/s1_userinfoguru', $data);
             $this->load->view('Dashboard/modal_edit', $data);
+            //$this->load->view('Dashboard/modal_add_jasa', $data);
             $this->load->view('Templates/footer');
         } else {
             redirect('home');
         }
     }
 
-    public function validateAddress()
+    public function addJasa()
     {
 
-        $getAlamat = $this->Member_model->getMemberDataBy('email', $this->session->userdata('email'));
-        $insertLatLon = $this->Member_model->insertLatLon($getAlamat['lokasi'], $getAlamat['id_user']);
+        $data['judul'] = "Add Jasa JaGO";
+        $data['dataMember'] = $this->Member_model->getMemberDataBy('email', $this->session->userdata('email'));
+        $data['dataMapel'] = $this->Jasa_model->getAllMapel();
 
-        if ($insertLatLon == true) {
-            $this->session->set_flashdata('success', 'Alamat berhasil divalidasi');
-            redirect('dashboard');
-        }
-        if ($insertLatLon == false) {
-            $this->session->set_flashdata('danger', 'Alamat gagal divalidasi. Lengkapi alamat Anda');
-            redirect('dashboard');
+        $this->form_validation->set_rules('mapel', 'Mata Pelajaran', 'required');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+        $this->form_validation->set_rules('hari', 'Hari', 'required');
+        $this->form_validation->set_rules('jam', 'Jam', 'required');
+        $this->form_validation->set_rules('durasi', 'Durasi', 'required');
+        $this->form_validation->set_rules('mapel', 'Mata Pelajaran', 'required');
+        $this->form_validation->set_rules('biaya', 'Biaya', 'required');
+        $this->form_validation->set_rules('per', 'Harga Per Jasa', 'required');
+        $this->form_validation->set_rules('mapel', 'Mata Pelajaran', 'required');
+
+        if ($this->form_validation->run() == false) {
+
+            if ($this->session->userdata() && $this->session->userdata('role') == 3) {
+                $this->load->view('Templates/header', $data);
+                $this->load->view('Dashboard/add_jasa', $data);
+                $this->load->view('Templates/footer');
+            } else {
+                redirect('home');
+            }
+        } else {
+
+            $addJasa = $this->Jasa_model->addJasa();
+
+            if ($addJasa == true) {
+                $this->session->set_flashdata('success', 'Berhasil menambahkan jasa baru');
+                redirect('dashboard/guru');
+            }
+
+            if ($addJasa == false) {
+                $this->session->set_flashdata('danger', 'Gagal menambahkan jasa baru');
+                redirect('dashboard/guru');
+            }
         }
     }
 }

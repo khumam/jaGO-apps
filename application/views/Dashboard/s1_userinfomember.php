@@ -20,13 +20,13 @@
                 </div>
                 <div class="userCardBottom">
                     <div class="row align-items-center">
-                        <div class="col-6 bgGreen">
-                            <a data-toggle="modal" data-target="#modalEdit">
+                        <div class="col-6 bgGreen btnHover">
+                            <a data-toggle="modal" data-target="#modalEdit" class="linkWhite">
                                 <h6 class="text-center p-2">Sunting Profil</h6>
                             </a>
                         </div>
-                        <div class="col-6 bgRed">
-                            <a href="<?php echo base_url('home/logout'); ?>">
+                        <div class="col-6 bgRed btnHover">
+                            <a href="<?php echo base_url('home/logout'); ?>" class="linkWhite">
                                 <h6 class="text-center p-2">Logout</h6>
                             </a>
                         </div>

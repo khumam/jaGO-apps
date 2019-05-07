@@ -55,7 +55,7 @@ class Member_model extends CI_Model
         $this->db->where('id_user', $this->input->post('id'));
         $update = $this->db->update('user', $dataUpdate);
 
-        if($update){
+        if ($update) {
             return true;
         } else {
             return false;
@@ -90,30 +90,25 @@ class Member_model extends CI_Model
         return $validate;
     }
 
-    public function insertLatLon($addr, $id){
+    public function insertLatLon()
+    {
 
-        $addr = urlencode($addr);
-        $data = file_get_contents('https://api.opencagedata.com/geocode/v1/json?q='. $addr .'&key=e285b4f1fc534bcdac97f7c1830a4d29');
-        $decdata = json_decode($data, true);
+        $id = $this->input->post('id');
+        $lat = $this->input->post('lat');
+        $lon = $this->input->post('lon');
 
-        if(!$decdata['results'][0]['geometry']['lat'] && !$decdata['results'][0]['geometry']['lng']){
-            return false;
+        $dataUpdate = [
+            'lat' => $lat,
+            'lon' => $lon
+        ];
+
+        $this->db->where('id_user', $id);
+        $update = $this->db->update('user', $dataUpdate);
+
+        if ($update) {
+            return true;
         } else {
-
-            $dataUpdate = [
-                'lat' => $decdata['results'][0]['geometry']['lat'],
-                'lon' => $decdata['results'][0]['geometry']['lng'],
-            ];
-
-            $this->db->where('id_user', $id);
-            $update = $this->db->update('user', $dataUpdate);
-
-            if($update){
-                return true;
-            } else {
-                return false;
-            }
-
+            return false;
         }
     }
 }

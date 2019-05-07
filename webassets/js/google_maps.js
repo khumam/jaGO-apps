@@ -25,62 +25,24 @@
 
 // }
 
-// var map = new ol.Map({
-// 	target: 'map_validasi',
-// 	layers: [
-// 		new ol.layer.Tile({
-// 			source: new ol.source.OSM()
-// 		})
-// 	],
-// 	view: new ol.View({
-// 		center: ol.proj.fromLonLat([110.32, -7.43]),
-// 		zoom: 14
-// 	})
-// });
-
-// import Map from 'ol/Map.js';
-// import View from 'ol/View.js';
-// import {
-// 	defaults as defaultControls
-// } from 'ol/control.js';
-// import MousePosition from 'ol/control/MousePosition.js';
-// import {
-// 	createStringXY
-// } from 'ol/coordinate.js';
-// import TileLayer from 'ol/layer/Tile.js';
-// import OSM from 'ol/source/OSM.js';
-
-var mousePositionControl = new MousePosition({
-	coordinateFormat: createStringXY(4),
-	projection: 'EPSG:4326',
-	// comment the following two lines to have the mouse position
-	// be placed within the map.
-	className: 'custom-mouse-position',
-	target: document.getElementById('mouse-position'),
-	undefinedHTML: '&nbsp;'
-});
-
-var map = new Map({
-	controls: defaultControls().extend([mousePositionControl]),
+var map = new ol.Map({
+	target: 'map_validasi',
 	layers: [
-		new TileLayer({
-			source: new OSM()
+		new ol.layer.Tile({
+			source: new ol.source.OSM()
 		})
 	],
-	target: 'map_validasi',
-	view: new View({
-		center: [0, 0],
-		zoom: 2
+	view: new ol.View({
+		center: ol.proj.fromLonLat([110.389, -7.049]),
+		zoom: 7
 	})
+
 });
 
-var projectionSelect = document.getElementById('projection');
-projectionSelect.addEventListener('change', function (event) {
-	mousePositionControl.setProjection(event.target.value);
-});
+map.on('singleclick', function (evt) {
 
-var precisionInput = document.getElementById('precision');
-precisionInput.addEventListener('change', function (event) {
-	var format = createStringXY(event.target.valueAsNumber);
-	mousePositionControl.setCoordinateFormat(format);
+	var koordinat = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
+	document.getElementById("lat").value = koordinat[1].toFixed(6);
+	document.getElementById("lon").value = koordinat[0].toFixed(6);
+
 });

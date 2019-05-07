@@ -59,7 +59,7 @@
 <script>
 	new WOW().init();
 </script>
-<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+<script src="<?php echo base_url('webassets/plugin/openlayer/ol.js'); ?>"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBguq7YRxB7qXKGRrVrJzUXJ-Dyhxq_sw4&callback=initMap" async defer></script>
 <script src="<?php echo base_url('webassets/js/google_maps.js'); ?>"></script>
 </body>
