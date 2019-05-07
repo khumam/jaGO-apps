@@ -14,7 +14,7 @@
                     <?php if ($dataMember['lat'] == 0 && $dataMember['lon'] == 0 && $dataMember['lokasi'] != "") : ?>
 
                         <div class="text-center">
-                            <a class="btn bgGreen noRadius btnHover text-white" data-toggle="modal" data-target="#modalValidasiMap">Validasi Alamat</a>
+                            <a class="btn bgGreen noRadius btnHover text-white" href="<?php echo base_url('dashboard/validasialamat'); ?>">Validasi Alamat</a>
                         </div>
                     <?php endif; ?>
                 </div>

@@ -20,7 +20,7 @@ class Dashboard extends CI_Controller
             $this->load->view('Templates/header', $data);
             $this->load->view('Dashboard/s1_userinfomember', $data);
             $this->load->view('Dashboard/modal_edit', $data);
-            $this->load->view('Dashboard/modal_validasi_map', $data);
+            //$this->load->view('Dashboard/modal_validasi_map', $data);
             $this->load->view('Templates/footer');
         } else if ($this->session->userdata() && $this->session->userdata('role') == 3) {
 
@@ -33,8 +33,9 @@ class Dashboard extends CI_Controller
     public function validasialamat()
     {
         $data['judul'] = "Menjadi jaGO";
+        $data['dataMember'] = $this->Member_model->getMemberDataBy('email', $this->session->userdata('email'));
         $this->load->view('Templates/header', $data);
-        $this->load->view('Dashboard/testMap', $data);
+        $this->load->view('Dashboard/map', $data);
         $this->load->view('Templates/footer');
     }
 
