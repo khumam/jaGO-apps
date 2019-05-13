@@ -18,9 +18,33 @@
 						</div>
 					<?php endif; ?>
 
-					<div class="row mt-4">
+					<div class="row mt-4 listItems">
 						<div class="col">
-							<h6>Teks 1</h6>
+							<h6>Jumlah jasa</h6>
+						</div>
+						<div class="col">
+							<p class="float-right"><?php echo $jumlahJasa; ?> Jasa</p>
+						</div>
+					</div>
+					<div class="row  mt-2 listItems">
+						<div class="col">
+							<h6>Jumlah pelanggan</h6>
+						</div>
+						<div class="col">
+							<p class="float-right"><?php echo $jumlahPelanggan; ?> Pelanggan</p>
+						</div>
+					</div>
+					<div class="row  mt-2 listItems">
+						<div class="col">
+							<h6>Jumlah pendapatan</h6>
+						</div>
+						<div class="col">
+							<p class="float-right">Teks 1</p>
+						</div>
+					</div>
+					<div class="row mt-2 ">
+						<div class="col">
+							<h6>Jumlah rating</h6>
 						</div>
 						<div class="col">
 							<p class="float-right">Teks 1</p>
@@ -57,48 +81,61 @@
 
 			<!-- keterangan halaman  -->
 			<div class="col-sm-7">
-				<h5 class="mtMobile">Judul Bagian</h5>
+				<h5 class="mtMobile">Jasaku</h5>
 				<hr class="mb-5">
 
 				<!-- Jasa -->
 				<div class="row">
-					<div class="col-6">
-						<div class="cardMember">
-							<h5 class="text-center">Nama Jasa</h5>
-							<p class="text-center mb-5">Deskripsi Jasa</p>
-							<div class="row listItems">
-								<div class="col">
-									<h6>Teks 1</h6>
-								</div>
-								<div class="col">
-									<p class="float-right">Teks 1</p>
-								</div>
-							</div>
 
-							<div class="row">
-								<div class="col">
-									<h6>Teks 1</h6>
+					<?php foreach ($dataJasa as $dj) : ?>
+						<div class="col-6" style="height: 420px;">
+							<div class="cardMember" style="height: 330px;">
+								<h5 class="text-center"><?php echo $dj['nama']; ?></h5>
+								<p class="text-center mb-5"><?php echo $dj['deskripsi']; ?></p>
+								<div class="row listItems">
+									<div class="col">
+										<h6>Jenjang</h6>
+									</div>
+									<div class="col">
+										<p><?php echo $dj['jenjang']; ?></p>
+									</div>
 								</div>
-								<div class="col">
-									<p class="float-right">Teks 1</p>
+
+								<div class="row listItems">
+									<div class="col">
+										<h6>Hari</h6>
+									</div>
+									<div class="col">
+										<p><?php echo $dj['hari']; ?></p>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col">
+										<h6>Biaya</h6>
+									</div>
+									<div class="col">
+										<p><?php echo $dj['biaya'] . ' / ' . $dj['biaya_per']; ?></p>
+									</div>
+								</div>
+							</div>
+							<div class="userCardBottom">
+								<div class="row">
+									<a href="<?php echo base_url('dashboard/updateJasa/' . $dj['id_jasa']); ?>" class="col-6 bgGreen text-center p-2 btnHover text-white">
+										<i class="fas fa-pencil-alt"></i>
+									</a>
+									<a href="<?php echo base_url('dashboard/deleteJasa/' . $dj['id_jasa']); ?>" class="col-6 bgRed text-center p-2 btnHover text-white">
+										<i class="fas fa-trash-alt"></i>
+									</a>
 								</div>
 							</div>
 						</div>
-						<div class="userCardBottom">
-							<div class="row">
-								<div class="col-6 bgGreen text-center p-2">
-									<i class="fas fa-pencil-alt"></i>
-								</div>
-								<div class="col-6 bgRed text-center p-2">
-									<i class="fas fa-trash-alt"></i>
-								</div>
-							</div>
-						</div>
-					</div>
+
+					<?php endforeach; ?>
 
 					<!-- add new jasa -->
 					<div class="col-6 hideMobile">
-						<div class="cardMember text-center">
+						<div class="cardMember text-center btnHover">
 							<a href="<?php echo base_url('dashboard/addJasa'); ?>"><i class="fas fa-plus" style="font-size: 150px; color: #ddd"></i></a>
 						</div>
 					</div>

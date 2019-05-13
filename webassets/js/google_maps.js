@@ -20,7 +20,7 @@
 // 	google.maps.event.addDomListener(marker, 'dragend', function (evt) {
 // 		//document.getElementById('current').innerHTML = '<p>Marker dropped: Current Lat: ' + evt.latLng.lat().toFixed(3) + ' Current Lng: ' + evt.latLng.lng().toFixed(3) + '</p>';
 // 		document.getElementById("lat").value = evt.latLng.lat().toFixed(3);
-// 		document.getElementById("lng").value = evt.latLng.lng().toFixed(3);
+// 		document.getElementById("lon").value = evt.latLng.lng().toFixed(3);
 // 	});
 
 // }
