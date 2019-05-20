@@ -27,10 +27,6 @@
             </div>
         </div>
 
-        <!-- <label for="durasi" class="mt-3">Durasi</label><br>
-        //<?php if (form_error('durasi')) echo form_error('durasi'); ?>
-        <input id="durasi" name="durasi" placeholder="2 Jam" class="noRadius form-control" type="number"> -->
-
         <div class="row">
             <div class="col-6">
                 <label for="biaya" class="mt-3">Biaya</label><br>

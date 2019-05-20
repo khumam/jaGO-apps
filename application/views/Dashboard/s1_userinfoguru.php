@@ -64,7 +64,9 @@
 							</a>
 						</div>
 						<div class="col-12 bgBlue2 hideDesktop">
-							<h6 class="text-center p-2">Tambah Jasa</h6>
+							<a href="<?php echo base_url('home/addJasa'); ?>" class="linkWhite">
+								<h6 class="text-center p-2">Tambah Jasa</h6>
+							</a>
 						</div>
 					</div>
 				</div>

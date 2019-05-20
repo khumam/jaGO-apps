@@ -63,6 +63,26 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBguq7YRxB7qXKGRrVrJzUXJ-Dyhxq_sw4&callback=initMap" async defer></script>
 <script src="<?php echo base_url('webassets/js/google_maps.js'); ?>"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script>
+	const danger = $('.data-danger').data('danger');
+	const success = $('.data-success').data('success');
+
+	if (danger) {
+		Swal.fire({
+			text: danger,
+			type: 'error',
+			confirmButtonText: 'Kembali'
+		})
+	}
+
+	if (success) {
+		Swal.fire({
+			text: success,
+			type: 'success',
+			confirmButtonText: 'Oke'
+		})
+	}
+</script>
 </body>
 
 </html>

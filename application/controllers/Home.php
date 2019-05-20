@@ -81,7 +81,7 @@ class Home extends CI_Controller
         //Rules
         $this->form_validation->set_rules('nama', 'Name', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[user.email]');
-        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
         $this->form_validation->set_rules('jenisMember', 'Member', 'required');
 
 
@@ -120,19 +120,19 @@ class Home extends CI_Controller
         $getEmail = $this->Member_model->getMemberDataBy('email', $this->session->userdata('email'));
         $validate = $this->Member_model->validateMember($getEmail['email'], $this->input->post('password'));
 
-        if($validate->num_rows() == 1){
+        if ($validate->num_rows() == 1) {
             $update = $this->Member_model->updateMemberData();
-            if($update == true){
+            if ($update == true) {
                 $this->session->set_flashdata('success', 'Data berhasil dirubah');
-                    redirect('dashboard');
+                redirect('dashboard');
             }
-            if($update == false){
+            if ($update == false) {
                 $this->session->set_flashdata('danger', 'Maaf ada kesalahan update data');
-                    redirect('dashboard');
+                redirect('dashboard');
             }
         } else {
             $this->session->set_flashdata('danger', 'Maaf ada kesalahan update data. Periksa kembali password Anda');
-                    redirect('dashboard');
+            redirect('dashboard');
         }
     }
 

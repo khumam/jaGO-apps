@@ -70,9 +70,9 @@
 	</nav>
 
 	<?php if ($this->session->flashdata('danger')) : ?>
-		<p class="text-center mt-3 smText text-danger"><?php echo $this->session->flashdata('danger'); ?></p>
+		<div class="data-danger" data-danger="<?php echo $this->session->flashdata('danger'); ?>""></div>
 	<?php endif; ?>
 
 	<?php if ($this->session->flashdata('success')) : ?>
-		<p class="text-center mt-3 smText text-success"><?php echo $this->session->flashdata('success'); ?></p>
+			<p class=" data-success" data-success="<?php echo $this->session->flashdata('success'); ?>"></div>
 	<?php endif; ?>

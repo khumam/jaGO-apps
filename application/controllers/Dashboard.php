@@ -108,7 +108,6 @@ class Dashboard extends CI_Controller
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
         $this->form_validation->set_rules('hari', 'Hari', 'required');
         $this->form_validation->set_rules('jam', 'Jam', 'required');
-        $this->form_validation->set_rules('durasi', 'Durasi', 'required');
         $this->form_validation->set_rules('mapel', 'Mata Pelajaran', 'required');
         $this->form_validation->set_rules('biaya', 'Biaya', 'required');
         $this->form_validation->set_rules('per', 'Harga Per Jasa', 'required');

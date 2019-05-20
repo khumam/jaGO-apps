@@ -3,21 +3,14 @@
 		<div class="h4 judulWeb text-center m-4">Cari Guru</div>
 
 		<form action="" method="post" class="centerMobile">
-			<div class="row align-items-center">
-				<div class="col-sm-7">
-					<input type="text" class="form-control form-control-lg noRadius" name="mapel"
-						placeholder="Masukkan mata pelajaran">
-				</div>
-				<div class="col-sm-3 mbMobile">
-					<select id="jenjang" name="jenjang" class="forms200">
-						<option>Pilih Jenjang</option>
-						<option value="1">SD</option>
-						<option value="2">SMP/ Sederajat</option>
-						<option value="3">SMA/ Sederajat</option>
-					</select><br>
-				</div>
-				<div class="col-sm-2">
-					<button class="mr-auto btn btn-lg bgGreen noRadius">Cari Guru</button>
+			<div class="input-group mb-3">
+				<select type="text" class="form-control noRadius" placeholder="Pilih Mata Pelajaran" aria-label="Recipient's username" aria-describedby="button-addon2">
+					<?php foreach ($dataMapel->result_array() as $dm) : ?>
+						<option value="<?php echo $dm['id_mapel']; ?>"><?php echo $dm['nama'] . ' - ' . $dm['jenjang']; ?></option>
+					<?php endforeach; ?>
+				</select>
+				<div class="input-group-append">
+					<button class="btn bgGreen noRadius" type="submit" id="button-addon2">Button</button>
 				</div>
 			</div>
 		</form>
