@@ -79,6 +79,16 @@ class Jasa_model extends CI_Model
         return $this->db->get('jasa')->result_array();
     }
 
+    public function getHasilCariJasaDataBy($param, $value)
+    {
+        $this->db->select('*');
+        $this->db->from('jasa');
+        $this->db->join('user', 'user.id_user = jasa.id_user', 'inner');
+        $this->db->join('mapel', 'mapel.id_mapel = jasa.id_mapel', 'inner');
+        $this->db->where($param, $value);
+        return $this->db->get()->result_array();
+    }
+
     public function getCustomerCount($id)
     {
 

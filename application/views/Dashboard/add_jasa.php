@@ -6,7 +6,7 @@
         <?php if (form_error('mapel')) echo form_error('mapel'); ?>
         <select id="mapel" name="mapel" class="forms" style="width: 100%!important">
             <?php foreach ($dataMapel->result_array() as $dm) : ?>
-                <option value="<?php echo $dm['id_mapel']; ?>"><?php echo $dm['nama'] . ' - ' . $dm['jenjang']; ?></option>
+                <option value="<?php echo $dm['id_mapel']; ?>"><?php echo $dm['nama_mapel'] . ' - ' . $dm['jenjang']; ?></option>
             <?php endforeach; ?>
         </select>
         <label for="deskripsi" class="mt-3">Deskripsi</label><br>

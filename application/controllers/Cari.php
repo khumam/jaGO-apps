@@ -15,30 +15,31 @@ class Cari extends CI_Controller
     {
         $data['judul'] = "Cari guru jaGO";
         $data['dataMapel'] = $this->Jasa_model->getAllMapel();
+        $data['dataMember'] = $this->Member_model->getMemberDataBy('email', $this->session->userdata('email'));
+
+        if ($data['dataMember']['lat'] == 0 || $data['dataMember']['lon'] == 0) {
+            $this->session->set_flashdata('danger', 'Validasi alamat Anda dulu');
+            if ($data['dataMember']['role'] == 2) {
+                redirect('dashboard');
+            }
+            if ($data['dataMember']['role'] == 3) {
+                redirect('dashboard/guru');
+            }
+        }
+
         $this->load->view('Templates/header', $data);
         $this->load->view('Cari/index', $data);
         $this->load->view('Templates/footer');
     }
 
-    private function distance($lat1, $lon1, $lat2, $lon2, $unit)
+    public function hasil()
     {
-        if (($lat1 == $lat2) && ($lon1 == $lon2)) {
-            return 0;
-        } else {
-            $theta = $lon1 - $lon2;
-            $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
-            $dist = acos($dist);
-            $dist = rad2deg($dist);
-            $miles = $dist * 60 * 1.1515;
-            $unit = strtoupper($unit);
+        $data['judul'] = "Hasil Pencarian guru jaGO";
+        $data['hasilCari'] = $this->Jasa_model->getHasilCariJasaDataBy('jasa.id_mapel', $this->input->post('cariMapel'));
+        $data['pribadi'] = $this->Member_model->getMemberDataBy('email', $this->session->userdata('email'));
 
-            if ($unit == "K") {
-                return ($miles * 1.609344);
-            } else if ($unit == "N") {
-                return ($miles * 0.8684);
-            } else {
-                return $miles;
-            }
-        }
+        $this->load->view('Templates/header', $data);
+        $this->load->view('Cari/hasil', $data);
+        $this->load->view('Templates/footer');
     }
 }
