@@ -32,11 +32,20 @@ class Cari extends CI_Controller
         $this->load->view('Templates/footer');
     }
 
-    public function hasil()
+    public function hasil($jenjang = '')
     {
         $data['judul'] = "Hasil Pencarian guru jaGO";
-        $data['hasilCari'] = $this->Jasa_model->getHasilCariJasaDataBy('jasa.id_mapel', $this->input->post('cariMapel'));
         $data['pribadi'] = $this->Member_model->getMemberDataBy('email', $this->session->userdata('email'));
+
+        if ($jenjang == '') {
+            if ($this->input->post('cariMapel') == '') {
+                redirect('cari/cariguru');
+            } else {
+                $data['hasilCari'] = $this->Jasa_model->getHasilCariJasaDataBy('jasa.id_mapel', $this->input->post('cariMapel'));
+            }
+        } else {
+            $data['hasilCari'] = $this->Jasa_model->getHasilCariJasaDataBy('mapel.jenjang', $jenjang);
+        }
 
         $this->load->view('Templates/header', $data);
         $this->load->view('Cari/hasil', $data);
