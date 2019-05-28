@@ -10,12 +10,14 @@ class Dashboard extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('Member_model');
         $this->load->model('Jasa_model');
+        $this->load->model('Pesan_model');
     }
 
     public function index()
     {
         $data['judul'] = "Menjadi jaGO";
         $data['dataMember'] = $this->Member_model->getMemberDataBy('email', $this->session->userdata('email'));
+        $data['pesanan'] = $this->Pesan_model->getPesananBy('id_user', $data['dataMember']['id_user']);
 
         if ($this->session->userdata() && $this->session->userdata('role') == 2) {
             $this->load->view('Templates/header', $data);
@@ -196,5 +198,55 @@ class Dashboard extends CI_Controller
             $this->session->set_flashdata('danger', 'Gagal menghapus jasa');
             redirect('dashboard/guru');
         }
+    }
+
+    public function batalPesan($id)
+    {
+
+        if ($this->session->userdata('logged_in') != true) {
+            redirect('home');
+        } else {
+            $batal = $this->Pesan_model->batalPesanan($id);
+            if ($batal) {
+                $this->session->set_flashdata('success', 'Berhasil membatalkan pesanan');
+                redirect('dashboard');
+            }
+            if (!$batal) {
+                $this->session->set_flashdata('gagal', 'Gagal membatalkan pesanan');
+                redirect('dashboard');
+            }
+        }
+    }
+
+    public function pesanan()
+    {
+
+        $data['dataMember'] = $this->Member_model->getMemberDataBy('email', $this->session->userdata('email'));
+        $data['judul'] = "Pesanan JaGO";
+        $data['pesanan'] = $this->Pesan_model->getGuruPesanan('jasa.id_user', $data['dataMember']['id_user']);
+        if ($data['dataMember']['role'] != 3) {
+            redirect('home');
+        }
+        $this->load->view('Templates/header', $data);
+        $this->load->view('Dashboard/s1_gurupesanan', $data);
+        $this->load->view('Templates/footer');
+    }
+
+    public function selesai($id)
+    {
+
+        if ($this->session->userdata('logged_in') != true) {
+            redirect('home');
+        }
+
+        $selesai = $this->Pesan_model->orderSelesai($id);
+
+        if ($selesai) :
+            $this->session->set_flashdata('success', 'Berhasil menyelesaikan pesanan');
+            redirect('dashboard/guru');
+        else :
+            $this->session->set_flashdata('danger', 'Gagal menyelesaikan pesanan');
+            redirect('dashboard/guru');
+        endif;
     }
 }

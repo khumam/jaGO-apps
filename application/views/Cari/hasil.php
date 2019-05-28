@@ -28,7 +28,7 @@
                         </div>
                         <div class="row bgGreen btnHover">
                             <div class="col-12 py-2 text-center">
-                                <a href="#" class="linkWhite"><?php echo "Rp" . $hc['biaya'] . " " . $hc['biaya_per']; ?></a>
+                                <a href="<?php echo base_url('cari/detail/' . $hc['id_jasa']); ?>" class="linkWhite"><?php echo "Rp" . $hc['biaya'] . " " . $hc['biaya_per']; ?></a>
                             </div>
                         </div>
                     </div>

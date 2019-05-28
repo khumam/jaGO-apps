@@ -92,7 +92,7 @@
 					<?php foreach ($dataJasa as $dj) : ?>
 						<div class="col-6" style="height: 420px;">
 							<div class="cardMember" style="height: 330px;">
-								<h5 class="text-center"><?php echo $dj['nama']; ?></h5>
+								<h5 class="text-center"><?php echo $dj['nama_mapel']; ?></h5>
 								<p class="text-center mb-5"><?php echo $dj['deskripsi']; ?></p>
 								<div class="row listItems">
 									<div class="col">

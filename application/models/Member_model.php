@@ -51,6 +51,7 @@ class Member_model extends CI_Model
             'email' => $this->input->post('email'),
             'bio' => $this->input->post('bio'),
             'lokasi' => $this->input->post('lokasi'),
+            'no_hp' => $this->input->post('handphone')
         ];
         $this->db->where('id_user', $this->input->post('id'));
         $update = $this->db->update('user', $dataUpdate);

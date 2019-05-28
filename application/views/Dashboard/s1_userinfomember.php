@@ -39,30 +39,37 @@
                 <h5 class="mtMobile">Pesanan</h5>
                 <hr class="mb-5">
 
-                <!-- Jasa -->
-                <div class="row">
-                    <div class="col">
-                        <div class="cardMember">
-                            <h5>Nama Guru</h5>
-                            <p>Mata Pelajaran</p>
-                            <p>Id Pesanan (status)</p>
-                        </div>
-                        <div class="userCardBottom">
-                            <div class="row d-flex align-items-center">
-                                <div class="col-4 bgGreen text-center p-2">
-                                    <h6>Detail</h6>
-                                </div>
-                                <div class="col-4 bgBlue2 text-center p-2">
-                                    <h6>Rating</h6>
-                                </div>
-                                <div class="col-4 bgRed text-center p-2">
-                                    <h6>Batalkan</h6>
+                <?php if (!$pesanan) echo "Tidak ada pesanan"; ?>
+                <?php foreach ($pesanan as $ps) : ?>
+                    <!-- Jasa -->
+                    <div class="row">
+                        <div class="col">
+                            <div class="cardMember">
+                                <h5><?php echo $ps['nama_guru']; ?></h5>
+                                <p><?php echo $ps['mapel_pesanan']; ?></p>
+                                <p><?php echo $ps['hari']; ?> - <?php echo $ps['jam']; ?></p>
+                                <p>ID : <?php echo $ps['id_pesanan']; ?> (<?php echo $ps['status']; ?>)</p>
+                            </div>
+                            <div class="userCardBottom">
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-4 bgGreen text-center btnHover">
+                                        <a href="<?php echo base_url('cari/detail/' . $ps['id_jasa']); ?>" class="linkWhite">
+                                            <h6 class="text-center p-2">Detail</h6>
+                                        </a>
+                                    </div>
+                                    <div class="col-4 bgBlue2 text-center p-2 btnHover">
+                                        <h6>Rating</h6>
+                                    </div>
+                                    <div class="col-4 bgRed text-center p-2 btnHover">
+                                        <a href="<?php echo base_url('dashboard/batalPesan/' . $ps['id_pesanan']); ?>" class="linkWhite">
+                                            <h6 class="text-center">Batalkan</h6>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
+                <?php endforeach; ?>
             </div>
         </div>
 

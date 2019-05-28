@@ -18,6 +18,10 @@
           <?php if (form_error('email')) echo form_error('email'); ?>
           <input id="email" name="email" placeholder="Email" class="form-control" type="email" value="<?php echo $dataMember['email']; ?>" required><br>
 
+          <label for="handphone" class="mt-3">Handphone</label><br>
+          <?php if (form_error('handphone')) echo form_error('handphone'); ?>
+          <input id="handphone" name="handphone" placeholder="08192809xxx" class="form-control" type="text" value="<?php echo $dataMember['no_hp']; ?>" required><br>
+
           <label for="bio" class="mt-3">Bio</label><br>
           <?php if (form_error('bio')) echo form_error('bio'); ?>
           <textarea id="bio" name="bio" placeholder="Bio" class="form-control"><?php echo $dataMember['bio']; ?></textarea><br>
