@@ -8,16 +8,33 @@
                     <h5 class="text-center">Tidak ditemukan</h5>
                 </div>
             <?php endif; ?>
-            <?php $i = 0;
-            foreach ($hasilCari as $hc) : ?>
+
+            <?php foreach ($hasilCari as $hcari) :
+                $hasilJarak[] = [
+                    'jarak' => distance($pribadi['lat'], $pribadi['lon'], $hcari['lat'], $hcari['lon']),
+                    'dataCari' => $hcari
+                ];
+            endforeach;
+
+            $sort = array();
+            foreach ($hasilJarak as $k => $v) :
+                $sort['jarak'][$k] = $v['jarak'];
+            endforeach;
+
+            ?>
+
+            <?php array_multisort($sort['jarak'], SORT_ASC, $hasilJarak);
+
+            $i = 0;
+            foreach ($hasilJarak as $hc) : ?>
 
                 <div class="col-4">
                     <div class="userCard">
                         <img src="<?php echo base_url('webassets/img/icons/location.svg'); ?>">
-                        <h5 class="text-center mt-4"><?php echo $hc['nama_mapel'] . ' - ' . $hc['jenjang']; ?></h5>
-                        <h6 class="text-center mb-1"><?php echo $hc['nama']; ?></h6>
-                        <?php $jarak[$i] = distance($pribadi['lat'], $pribadi['lon'], $hc['lat'], $hc['lon']);
-                        echo "<p class='text-center mb-4'>Jarak = ± " . round($jarak[$i], 2) . " KM</p>"; ?>
+                        <h5 class="text-center mt-4"><?php echo $hc['dataCari']['nama_mapel'] . ' - ' . $hc['dataCari']['jenjang']; ?></h5>
+                        <h6 class="text-center mb-1"><?php echo $hc['dataCari']['nama']; ?></h6>
+                        <?php //$jarak[$i] = distance($pribadi['lat'], $pribadi['lon'], $hc['lat'], $hc['lon']);
+                        echo "<p class='text-center mb-4'>Jarak = ± " . round($hc['jarak'], 2) . " KM</p>"; ?>
                         <div class="row  mt-4">
                             <div class="col">
                                 <p>Rating</p>
@@ -28,7 +45,7 @@
                         </div>
                         <div class="row bgGreen btnHover">
                             <div class="col-12 py-2 text-center">
-                                <a href="<?php echo base_url('cari/detail/' . $hc['id_jasa']); ?>" class="linkWhite"><?php echo "Rp" . $hc['biaya'] . " " . $hc['biaya_per']; ?></a>
+                                <a href="<?php echo base_url('cari/detail/' . $hc['dataCari']['id_jasa']); ?>" class="linkWhite"><?php echo "Rp" . $hc['dataCari']['biaya'] . " " . $hc['dataCari']['biaya_per']; ?></a>
                             </div>
                         </div>
                     </div>

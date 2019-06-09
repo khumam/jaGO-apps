@@ -39,10 +39,10 @@
                 <h5 class="mtMobile">Pesanan</h5>
                 <hr class="mb-5">
 
-                <?php if (!$pesanan) echo "Tidak ada pesanan"; ?>
-                <?php foreach ($pesanan as $ps) : ?>
+                <?php if (!$pesanan->result_array()) echo "Tidak ada pesanan"; ?>
+                <?php foreach ($pesanan->result_array() as $ps) : ?>
                     <!-- Jasa -->
-                    <div class="row">
+                    <div class="row mb-4">
                         <div class="col">
                             <div class="cardMember">
                                 <h5><?php echo $ps['nama_guru']; ?></h5>

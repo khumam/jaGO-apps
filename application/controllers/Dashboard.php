@@ -17,7 +17,7 @@ class Dashboard extends CI_Controller
     {
         $data['judul'] = "Menjadi jaGO";
         $data['dataMember'] = $this->Member_model->getMemberDataBy('email', $this->session->userdata('email'));
-        $data['pesanan'] = $this->Pesan_model->getPesananBy('id_user', $data['dataMember']['id_user']);
+        $data['pesanan'] = $this->Pesan_model->getPesananByMember('pesanan.id_user', $data['dataMember']['id_user']);
 
         if ($this->session->userdata() && $this->session->userdata('role') == 2) {
             $this->load->view('Templates/header', $data);
@@ -77,8 +77,9 @@ class Dashboard extends CI_Controller
         $data['dataMember'] = $this->Member_model->getMemberDataBy('email', $this->session->userdata('email'));
         $data['dataJasa'] = $this->Jasa_model->getAllJasaBy('id_user', $data['dataMember']['id_user'])->result_array();
         $data['jumlahJasa'] = $this->Jasa_model->getAllJasaBy('id_user', $data['dataMember']['id_user'])->num_rows();
-        $data['jumlahPelanggan'] = $this->Jasa_model->getCustomerCount($data['dataMember']['id_user']);
+        $data['jumlahPelanggan'] = $this->Pesan_model->jumlahPelanggan($data['dataMember']['id_user']);
         $data['jumlahPendapatan'] = $this->Jasa_model->getIncome($data['dataMember']['id_user']);
+        $data['pesanan'] = $this->Pesan_model->getPesanan('jasa.id_user', $data['dataMember']['id_user']);
 
         if ($this->session->userdata() && $this->session->userdata('role') == 3) {
             $this->load->view('Templates/header', $data);
@@ -200,20 +201,28 @@ class Dashboard extends CI_Controller
         }
     }
 
-    public function batalPesan($id)
+    public function batalPesan()
     {
 
         if ($this->session->userdata('logged_in') != true) {
             redirect('home');
         } else {
-            $batal = $this->Pesan_model->batalPesanan($id);
+            $batal = $this->Pesan_model->batalPesanan($this->input->post('id_pesanan'), $this->input->post('alasanbatal'));
             if ($batal) {
                 $this->session->set_flashdata('success', 'Berhasil membatalkan pesanan');
-                redirect('dashboard');
+                if ($this->session->userdata('role') == 2) :
+                    redirect('dashboard');
+                else :
+                    redirect('dashboard/guru');
+                endif;
             }
             if (!$batal) {
                 $this->session->set_flashdata('gagal', 'Gagal membatalkan pesanan');
-                redirect('dashboard');
+                if ($this->session->userdata('role') == 2) :
+                    redirect('dashboard');
+                else :
+                    redirect('dashboard/guru');
+                endif;
             }
         }
     }
@@ -223,7 +232,7 @@ class Dashboard extends CI_Controller
 
         $data['dataMember'] = $this->Member_model->getMemberDataBy('email', $this->session->userdata('email'));
         $data['judul'] = "Pesanan JaGO";
-        $data['pesanan'] = $this->Pesan_model->getGuruPesanan('jasa.id_user', $data['dataMember']['id_user']);
+        $data['pesanan'] = $this->Pesan_model->getPesanan('jasa.id_user', $data['dataMember']['id_user']);
         if ($data['dataMember']['role'] != 3) {
             redirect('home');
         }

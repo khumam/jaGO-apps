@@ -31,7 +31,7 @@
 							<h6>Jumlah pelanggan</h6>
 						</div>
 						<div class="col">
-							<p class="float-right"><?php echo $jumlahPelanggan; ?> Pelanggan</p>
+							<p class="float-right"><?php echo count($jumlahPelanggan); ?> Pelanggan</p>
 						</div>
 					</div>
 					<div class="row  mt-2 listItems">
@@ -73,8 +73,9 @@
 
 				<div class="notifikasi mt-5">
 					<div class="row align-items-center">
-						<div class="col-12">
-							<p class="notifikasiTeks p-2 align-middle">Pesanan baru <span class="float-right">(25 Pesanan)</span></p>
+						<div class="col-12 p-3 notifikasiTeks">
+							<a href="<?php echo base_url('dashboard/pesanan'); ?>" class="mr-2 ml-2">Pesanan baru <span class="float-right"><?php $totalPesanan = count($pesanan->result_array()); ?>
+									<?php echo $totalPesanan . " Pesanan "; ?></span></a>
 						</div>
 					</div>
 				</div>
