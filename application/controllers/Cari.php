@@ -43,6 +43,21 @@ class Cari extends CI_Controller
         $data['judul'] = "Hasil Pencarian guru jaGO";
         $data['pribadi'] = $this->Member_model->getMemberDataBy('email', $this->session->userdata('email'));
 
+        if ($this->session->userdata('logged_in') == true) {
+            if ($data['pribadi']['lat'] == 0 || $data['pribadi']['lon'] == 0) {
+                $this->session->set_flashdata('danger', 'Validasi alamat Anda dulu');
+                if ($data['pribadi']['role'] == 2) {
+                    redirect('dashboard');
+                }
+                if ($data['pribadi']['role'] == 3) {
+                    redirect('dashboard/guru');
+                }
+            }
+        } else {
+            $this->session->set_flashdata('danger', 'Mohon maaf Anda harus login terlebih dahulu');
+            redirect('home');
+        }
+
         if ($jenjang == '') {
             if ($this->input->post('cariMapel') == '') {
                 redirect('cari/cariguru');
@@ -58,11 +73,24 @@ class Cari extends CI_Controller
         $this->load->view('Templates/footer');
     }
 
+    public function terdekat()
+    {
+        $data['judul'] = "Hasil Pencarian Terdekat guru jaGO";
+        $data['pribadi'] = $this->Member_model->getMemberDataBy('email', $this->session->userdata('email'));
+
+        $data['hasilCari'] = $this->Jasa_model->getHasilAll();
+
+        $this->load->view('Templates/header', $data);
+        $this->load->view('Cari/hasil', $data);
+        $this->load->view('Templates/footer');
+    }
+
     public function detail($idJasa = '')
     {
         $data['judul'] = "Hasil Pencarian guru jaGO";
         $data['pribadi'] = $this->Member_model->getMemberDataBy('email', $this->session->userdata('email'));
         $data['hasilCari'] = $this->Jasa_model->getHasilCariJasaDataBy('jasa.id_jasa', $idJasa);
+        $data['pesanan'] = $this->Pesan_model->getPesananByMember('pesanan.id_user', $data['pribadi']['id_user']);
 
         $this->load->view('Templates/header', $data);
         $this->load->view('Cari/detail', $data);
@@ -80,8 +108,6 @@ class Cari extends CI_Controller
             redirect('home');
         }
 
-        $this->form_validation->set_rules('hari', 'Hari', 'required');
-        $this->form_validation->set_rules('jam', 'Jam', 'required');
         $this->form_validation->set_rules('catatan', 'Catatan', 'required');
 
         if ($this->form_validation->run() == FALSE) {

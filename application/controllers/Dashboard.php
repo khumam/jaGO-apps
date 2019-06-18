@@ -78,7 +78,8 @@ class Dashboard extends CI_Controller
         $data['dataJasa'] = $this->Jasa_model->getAllJasaBy('id_user', $data['dataMember']['id_user'])->result_array();
         $data['jumlahJasa'] = $this->Jasa_model->getAllJasaBy('id_user', $data['dataMember']['id_user'])->num_rows();
         $data['jumlahPelanggan'] = $this->Pesan_model->jumlahPelanggan($data['dataMember']['id_user']);
-        $data['jumlahPendapatan'] = $this->Jasa_model->getIncome($data['dataMember']['id_user']);
+        $data['jumlahPendapatan'] = $this->Pesan_model->getPendapatan($data['dataMember']['id_user']);
+        $data['jumlahNilai'] = $this->Pesan_model->getAllRating($data['dataMember']['id_user']);
         $data['pesanan'] = $this->Pesan_model->getPesanan('jasa.id_user', $data['dataMember']['id_user']);
 
         if ($this->session->userdata() && $this->session->userdata('role') == 3) {
@@ -109,8 +110,8 @@ class Dashboard extends CI_Controller
 
         $this->form_validation->set_rules('mapel', 'Mata Pelajaran', 'required');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
-        $this->form_validation->set_rules('hari', 'Hari', 'required');
-        $this->form_validation->set_rules('jam', 'Jam', 'required');
+        $this->form_validation->set_rules('jam', 'Jam Mulai', 'required');
+        $this->form_validation->set_rules('jam2', 'Jam Selesai', 'required');
         $this->form_validation->set_rules('mapel', 'Mata Pelajaran', 'required');
         $this->form_validation->set_rules('biaya', 'Biaya', 'required');
         $this->form_validation->set_rules('per', 'Harga Per Jasa', 'required');
@@ -241,14 +242,14 @@ class Dashboard extends CI_Controller
         $this->load->view('Templates/footer');
     }
 
-    public function selesai($id)
+    public function selesai($id, $total)
     {
 
         if ($this->session->userdata('logged_in') != true) {
             redirect('home');
         }
 
-        $selesai = $this->Pesan_model->orderSelesai($id);
+        $selesai = $this->Pesan_model->orderSelesai($id, $total);
 
         if ($selesai) :
             $this->session->set_flashdata('success', 'Berhasil menyelesaikan pesanan');
@@ -256,6 +257,22 @@ class Dashboard extends CI_Controller
         else :
             $this->session->set_flashdata('danger', 'Gagal menyelesaikan pesanan');
             redirect('dashboard/guru');
+        endif;
+    }
+
+    public function rating($id_jasa)
+    {
+        if ($this->session->userdata('logged_in') != true) {
+            redirect('home');
+        }
+
+        $rating = $this->Pesan_model->rating($id_jasa);
+        if ($rating == true) :
+            $this->session->set_flashdata('success', 'Berhasil memberikan rating');
+            redirect('dashboard');
+        else :
+            $this->session->set_flashdata('danger', 'Gagal memberikan rating');
+            redirect('dashboard');
         endif;
     }
 }

@@ -20,7 +20,32 @@
                                     <p><b>Waktu pelaksanaan : </b><br><?php echo $ps['req_hari']; ?> <br> <?php echo $ps['req_jam']; ?></p>
                                 </div>
                                 <div class="row">
-                                    <p><b>Biaya dipilih : </b><br><?php echo $ps['biaya']; ?> /<?php echo $ps['biaya_per']; ?></p>
+                                    <p><b>Biaya dipilih : </b><br>Rp<?php echo $ps['biaya']; ?> /<?php echo $ps['biaya_per']; ?></p>
+                                </div>
+                                <div class="row">
+                                    <p><b>Total : </b><br>Rp<?php $total = 0;
+                                                            if ($ps['biaya_per'] == 'Per Mata Pelajaran') {
+                                                                $total = $ps['biaya'];
+                                                                echo $total;
+                                                            }
+                                                            if ($ps['biaya_per'] == 'Per Hari') {
+                                                                $jumlahReqHari = explode(',', $ps['req_hari']);
+                                                                $jumlahReqHari = count($jumlahReqHari);
+                                                                $total = $ps['biaya'] * (int)$jumlahReqHari;
+                                                                echo $total;
+                                                            }
+                                                            if ($ps['biaya_per'] == 'Per Jam') {
+                                                                $seluruhJam = explode('-', $ps['req_jam']);
+                                                                $awal = explode(':', $seluruhJam[0]);
+                                                                $akhir = explode(':', $seluruhJam[1]);
+                                                                if (!$akhir[0]) {
+                                                                    $durasi = 1;
+                                                                } else {
+                                                                    $durasi = (int)$akhir[0] - (int)$awal[0];
+                                                                }
+                                                                $total = $ps['biaya'] * $durasi;
+                                                                echo $total;
+                                                            } ?>
                                 </div>
                             </div>
                             <div class="col">
@@ -42,12 +67,17 @@
                     </div>
                     <div class="userCardBottom">
                         <div class="row d-flex align-items-center">
-                            <div class="col-6 bgGreen text-center btnHover">
-                                <a href="<?php echo base_url('dashboard/selesai/' . $ps['id_jasa']); ?>" class="linkWhite">
+                            <div class="col-4 bgGreen text-center btnHover">
+                                <a href="<?php echo base_url('dashboard/selesai/' . $ps['id_pesanan']) . "/" . $total; ?>" class="linkWhite">
                                     <h6 class="text-center p-2">Pesanan selesai</h6>
                                 </a>
                             </div>
-                            <div class="col-6 bgRed text-center p-2 btnHover">
+                            <div class="col-4 bgBlue2 text-center btnHover">
+                                <a href="https://api.whatsapp.com/send?phone=<?php echo $ps['nohp_pemesan']; ?>" class="linkWhite">
+                                    <h6 class="text-center p-2">Hubungi</h6>
+                                </a>
+                            </div>
+                            <div class="col-4 bgRed text-center p-2 btnHover">
                                 <a data-toggle="modal" data-target="#modalBatal<?php echo $ps['id_pesanan']; ?>" class="linkWhite">
                                     <h6 class="text-center">Batalkan Pesanan</h6>
                                 </a>

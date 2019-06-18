@@ -4,7 +4,7 @@
 			<div class="col-sm-4 wow fadeInLeft">
 				<h3>Ingin menjadi Guru?</h3>
 				<p>Gabung bersama JaGO untuk ikut serta mencerdaskan bangsa!</p>
-				<a class="btn bgRed p-3 text-center mt-5 noRadius mbMobile btnHover" href="#">Gabung Sekarang</a>
+				<a class="btn bgRed p-3 text-center mt-5 noRadius mbMobile btnHover" href="<?php echo base_url('home/register'); ?>">Gabung Sekarang</a>
 			</div>
 			<div class="col-sm-4 wow flipInY" data-wow-delay=".3s">
 				<div class="tawaranCard bgBlue3 p-4 text-left">

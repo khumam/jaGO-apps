@@ -7,6 +7,13 @@ class Member_model extends CI_Model
     public function registerNewMember()
     {
 
+        if ($this->input->post('jenisKelamin') == 'pria') {
+            $jk = "man.svg";
+        }
+        if ($this->input->post('jenisKelamin') == 'wanita') {
+            $jk = "girl.svg";
+        }
+
         $dataToInsert = [
             "nama" => $this->input->post('nama'),
             "email" => $this->input->post('email'),
@@ -17,6 +24,9 @@ class Member_model extends CI_Model
             "lon" => 0,
             "role" => $this->input->post('jenisMember'),
             "is_active" => 0,
+            "no_hp" => '',
+            "image" => $jk,
+            "jk" => $this->input->post('jenisKelamin'),
         ];
 
         $query = $this->db->insert('user', $dataToInsert);
@@ -48,10 +58,24 @@ class Member_model extends CI_Model
     {
         $dataUpdate = [
             'nama' => $this->input->post('nama'),
-            'email' => $this->input->post('email'),
             'bio' => $this->input->post('bio'),
             'lokasi' => $this->input->post('lokasi'),
             'no_hp' => $this->input->post('handphone')
+        ];
+        $this->db->where('id_user', $this->input->post('id'));
+        $update = $this->db->update('user', $dataUpdate);
+
+        if ($update) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function updateMemberFoto($name)
+    {
+        $dataUpdate = [
+            'image' => $name,
         ];
         $this->db->where('id_user', $this->input->post('id'));
         $update = $this->db->update('user', $dataUpdate);

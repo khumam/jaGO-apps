@@ -16,7 +16,7 @@
 		</form>
 
 		<div class="text-center">
-			<a href="" class="btn btn-lg bgBlue1 noRadius mt-5">Cari Berdasarkan Lokasi Terdekat</a>
+			<a href="<?php echo base_url('cari/terdekat'); ?>" class="btn btn-lg btnHover bgBlue1 noRadius mt-5">Cari Berdasarkan Lokasi Terdekat</a>
 		</div>
 	</div>
 </section>

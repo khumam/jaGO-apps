@@ -18,6 +18,12 @@
                         <label for="pass" class="mt-3">Password</label><br>
                         <?php if (form_error('password')) echo form_error('password'); ?>
                         <input id="pass" name="password" placeholder="Password" class="forms" type="password"><br>
+                        <label for="jenisKelamin" class="mt-3">Jenis Kelamin</label><br>
+                        <?php if (form_error('jenisKelamin')) echo form_error('jenisKelamin'); ?>
+                        <select id="jenisKelamin" name="jenisKelamin" class="forms">
+                            <option value="pria">Pria</option>
+                            <option value="wanita">Wanita</option>
+                        </select><br>
                         <label for="jenisMember" class="mt-3">Pilih Jenis Member</label><br>
                         <?php if (form_error('jenisMember')) echo form_error('jenisMember'); ?>
                         <select id="jenisMember" name="jenisMember" class="forms">

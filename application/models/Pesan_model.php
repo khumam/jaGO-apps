@@ -6,13 +6,14 @@ class Pesan_model extends CI_Model
 
     public function addPesanan()
     {
+        $hari = implode(', ', $this->input->post('hari'));
         $dataToInsert = [
             'id_jasa' => $this->input->post('id_jasa'),
             'id_user' => $this->input->post('id_user'),
             'nama_guru' => $this->input->post('nama_guru'),
             'mapel_pesanan' => $this->input->post('mapel_pesanan'),
-            'hari' => $this->input->post('hari'),
-            'jam' => $this->input->post('jam'),
+            'hari' => $hari,
+            'jam' => $this->input->post('jam') . '-' . $this->input->post('jam2'),
             'catatan' => $this->input->post('catatan'),
             'status' => 'Menunggu',
             'nilai' => 0,
@@ -59,7 +60,7 @@ class Pesan_model extends CI_Model
     public function getPesanan($param, $value)
     {
 
-        $this->db->select('user.nama as nama_pemesan, user.lokasi as lokasi_pemesan, user.no_hp as nohp_pemesan, jasa.id_jasa,jasa.id_user as id_user_jasa,jasa.deskripsi,jasa.id_mapel,jasa.hari,jasa.jam,jasa.biaya,jasa.biaya_per,pesanan.id_pesanan,pesanan.id_jasa,pesanan.id_user,pesanan.nama_guru,pesanan.mapel_pesanan,pesanan.hari as req_hari,pesanan.jam as req_jam,pesanan.catatan,pesanan.status, pesanan.time_created');
+        $this->db->select('user.nama as nama_pemesan, user.lokasi as lokasi_pemesan, user.no_hp as nohp_pemesan, jasa.id_jasa,jasa.id_user as id_user_jasa,jasa.deskripsi,jasa.id_mapel,jasa.hp_guru,jasa.hari,jasa.jam,jasa.biaya,jasa.biaya_per,pesanan.id_pesanan,pesanan.id_jasa,pesanan.id_user,pesanan.nama_guru,pesanan.mapel_pesanan,pesanan.hari as req_hari,pesanan.jam as req_jam,pesanan.catatan,pesanan.status, pesanan.time_created');
         $this->db->from('jasa');
         $this->db->join('pesanan', 'jasa.id_jasa = pesanan.id_jasa', 'inner');
         $this->db->join('user', 'pesanan.id_user = user.id_user', 'inner');
@@ -73,22 +74,23 @@ class Pesan_model extends CI_Model
     public function getPesananByMember($param, $value)
     {
 
-        $this->db->select('user.nama as nama_pemesan, user.lokasi as lokasi_pemesan, user.no_hp as nohp_pemesan, jasa.id_jasa,jasa.id_user as id_user_jasa,jasa.deskripsi,jasa.id_mapel,jasa.hari,jasa.jam,jasa.biaya,jasa.biaya_per,pesanan.id_pesanan,pesanan.id_jasa,pesanan.id_user,pesanan.nama_guru,pesanan.mapel_pesanan,pesanan.hari as req_hari,pesanan.jam as req_jam,pesanan.catatan,pesanan.status, pesanan.time_created');
+        $this->db->select('user.nama as nama_pemesan, user.lokasi as lokasi_pemesan, user.no_hp as nohp_pemesan, jasa.id_jasa,jasa.id_user as id_user_jasa,jasa.deskripsi,jasa.id_mapel,jasa.hp_guru,jasa.hari,jasa.jam,jasa.biaya,jasa.biaya_per,pesanan.id_pesanan,pesanan.id_jasa,pesanan.id_user,pesanan.nama_guru,pesanan.mapel_pesanan,pesanan.hari as req_hari,pesanan.jam as req_jam,pesanan.catatan,pesanan.status, pesanan.time_created');
         $this->db->from('jasa');
         $this->db->join('pesanan', 'jasa.id_jasa = pesanan.id_jasa', 'inner');
         $this->db->join('user', 'pesanan.id_user = user.id_user', 'inner');
         $this->db->where($param, $value);
-        $this->db->where('status !=',  'Selesai');
+        $this->db->where('nilai', 0);
         $this->db->order_by('pesanan.id_pesanan', 'DESC');
         $this->db->where('pesanan.delete', 0);
         return $this->db->get();
     }
 
-    public function orderSelesai($id)
+    public function orderSelesai($id, $total)
     {
 
         $update = [
             'status' => 'Selesai',
+            'pendapatan' => $total
         ];
 
         $this->db->where('id_pesanan', $id);
@@ -107,5 +109,40 @@ class Pesan_model extends CI_Model
         $this->db->where('jasa.id_user', $id_user);
         $this->db->where('pesanan.status =', 'Selesai');
         return $this->db->get()->result_array();
+    }
+
+    public function getPendapatan($id_user)
+    {
+        $this->db->select('pesanan.id_jasa, pesanan.status, pesanan.pendapatan, jasa.id_jasa, jasa.id_user, user.id_user');
+        $this->db->from('pesanan');
+        $this->db->join('jasa', 'pesanan.id_jasa = jasa.id_jasa', 'inner');
+        $this->db->join('user', 'jasa.id_user = user.id_user', 'inner');
+        $this->db->where('jasa.id_user', $id_user);
+        $this->db->where('pesanan.status =', 'Selesai');
+        return $this->db->get()->result_array();
+    }
+
+    public function getAllRating($id_user)
+    {
+        $this->db->select('pesanan.id_jasa, pesanan.status, pesanan.nilai, jasa.id_jasa, jasa.id_user, user.id_user');
+        $this->db->from('pesanan');
+        $this->db->join('jasa', 'pesanan.id_jasa = jasa.id_jasa', 'inner');
+        $this->db->join('user', 'jasa.id_user = user.id_user', 'inner');
+        $this->db->where('jasa.id_user', $id_user);
+        $this->db->where('pesanan.status =', 'Selesai');
+        return $this->db->get()->result_array();
+    }
+
+    public function rating($id)
+    {
+
+        $data = [
+            'nilai' => $this->input->post('rating'),
+        ];
+
+        $this->db->where('id_pesanan', $id);
+        $rating = $this->db->update('pesanan', $data);
+
+        return $rating ? true : false;
     }
 }

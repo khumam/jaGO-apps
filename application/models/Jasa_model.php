@@ -7,15 +7,18 @@ class Jasa_model extends CI_Model
     public function addJasa()
     {
 
+        $hari = implode(', ', $this->input->post('hari'));
+
         $dataToInsert = [
             'id_user' => $this->input->post('id_user'),
             'deskripsi' => $this->input->post('deskripsi'),
             'id_mapel' => $this->input->post('mapel'),
-            'hari' => $this->input->post('hari'),
-            'jam' => $this->input->post('jam'),
+            'hari' => $hari,
+            'jam' => $this->input->post('jam') . " - " . $this->input->post('jam2'),
             'biaya' => $this->input->post('biaya'),
             'biaya_per' => $this->input->post('per'),
             'delete' => 0,
+            'hp_guru' => $this->input->post('hp_guru')
         ];
 
         $insert = $this->db->insert('jasa', $dataToInsert);
@@ -86,6 +89,16 @@ class Jasa_model extends CI_Model
         $this->db->join('user', 'user.id_user = jasa.id_user', 'inner');
         $this->db->join('mapel', 'mapel.id_mapel = jasa.id_mapel', 'inner');
         $this->db->where($param, $value);
+        $this->db->where('jasa.delete', 0);
+        return $this->db->get()->result_array();
+    }
+
+    public function getHasilAll()
+    {
+        $this->db->select('*');
+        $this->db->from('jasa');
+        $this->db->join('user', 'user.id_user = jasa.id_user', 'inner');
+        $this->db->join('mapel', 'mapel.id_mapel = jasa.id_mapel', 'inner');
         return $this->db->get()->result_array();
     }
 

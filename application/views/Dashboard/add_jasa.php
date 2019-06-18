@@ -2,6 +2,7 @@
     <h5 class="py-4 text-center">Tambah Jasa Baru</h5>
     <form action="<?php echo base_url('dashboard/addJasa'); ?>" method="post">
         <input id="id_user" name="id_user" placeholder="Id_user" class="form-control" type="number" value="<?php echo $dataMember['id_user']; ?>" hidden>
+        <input id="hp_guru" name="hp_guru" placeholder="Hp_guru" class="form-control" type="number" value="<?php echo $dataMember['no_hp']; ?>" hidden>
         <label for="mapel">Mata Pelajaran</label><br>
         <?php if (form_error('mapel')) echo form_error('mapel'); ?>
         <select id="mapel" name="mapel" class="forms" style="width: 100%!important">
@@ -14,15 +15,32 @@
         <textarea id="deskripsi" name="deskripsi" placeholder="Deskripsi" class="noRadius form-control" required></textarea><br>
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-sm-6">
                 <label for="hari" class="mt-3">Hari</label><br>
                 <?php if (form_error('hari')) echo form_error('hari'); ?>
-                <input id="hari" name="hari" placeholder="Contoh Senin-Jumat" class="noRadius form-control">
+                <!-- <input id="hari" name="hari" placeholder="Contoh Senin-Jumat" class="noRadius form-control"> -->
+                <select class="noRadius" multiple="multiple" id="pilihHari" placeholder="Silakan pilih hari" name="hari[]" style="width: 400px;">
+                    <option value="Senin">Senin</option>
+                    <option value="Selasa">Selasa</option>
+                    <option value="Rabu">Rabu</option>
+                    <option value="Kamis">Kamis</option>
+                    <option value="Jumat">Jumat</option>
+                    <option value="Sabtu">Sabtu</option>
+                    <option value="Minggu">Minggu</option>
+                </select>
             </div>
-            <div class="col-6">
+            <div class="col-sm-6">
                 <label for="jam" class="mt-3">Jam (Jam:Menit)</label><br>
-                <?php if (form_error('jam')) echo form_error('jam'); ?>
-                <input id="jam" name="jam" placeholder="Contoh 13.00 - 14.00" class="noRadius form-control">
+                <div class="row">
+                    <div class="col">
+                        <?php if (form_error('jam')) echo form_error('jam'); ?>
+                        <input type="text" id="jam" name="jam" placeholder="Mulai jam" class="noRadius form-control js-time-picker">
+                    </div>
+                    <div class="col">
+                        <?php if (form_error('jam2')) echo form_error('jam2'); ?>
+                        <input type="text" id="jam2" name="jam2" placeholder="Selesai jam" class="noRadius form-control js-time-picker">
+                    </div>
+                </div>
 
             </div>
         </div>

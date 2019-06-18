@@ -7,7 +7,7 @@
 		</div>
 		<h3 class="txtBlue judul text-center wow fadeInUp">Bergabung untuk Mulai Mencari Guru</h3>
 		<div class="text-center wow fadeInUp">
-			<a class="btn bgRed p-3 text-center mt-2 noRadius mbMobile btnHover" href="#">Gabung Sekarang</a>
+			<a class="btn bgRed p-3 text-center mt-2 noRadius mbMobile btnHover" href="<?php echo base_url('home/register'); ?>">Gabung Sekarang</a>
 		</div>
 	</div>
 </section>

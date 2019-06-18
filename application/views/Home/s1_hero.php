@@ -5,7 +5,6 @@
 		<h4 class="medText wow fadeInUp">Jadi jago dengan JaGO!</h4>
 		<p class="lead mb-5 wow fadeInUp">Temukan guru terbaik berbagai jenjang untuk meningkatkan prestasi belajar</p>
 		<a class="wow fadeInUp btn-lg btn-primary text-white mx-3 px-4 py-3 radiusBorder smText btnHover" href="<?php echo base_url('cari/cariguru'); ?>">Cari Guru</a>
-		<a class="wow fadeInUp btn-lg btn-outline-primary text-white mx-3 px-4 py-3 radiusBorder smText btnHover"
-			href="">Selengkapnya</a>
+		<a class="wow fadeInUp btn-lg btn-outline-primary text-white mx-3 px-4 py-3 radiusBorder smText btnHover" data-scroll href="#fitur">Selengkapnya</a>
 	</div>
 </div>

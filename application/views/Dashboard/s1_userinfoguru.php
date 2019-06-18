@@ -6,7 +6,10 @@
 		<div class="row justify-items-center">
 			<div class="col-sm-5">
 				<div class="userCard">
-					<img src="<?php echo base_url('webassets/img/icons/location.svg'); ?>">
+					<img class="rounded-circle" style="height:130px; width:130px;" alt="<?php echo $dataMember['nama']; ?>" src="<?php echo base_url('webassets/userimage/' . $dataMember['image']); ?>">
+					<div class="text-center mt-2 mb-2">
+						<a data-toggle="modal" data-target="#modalUploadFoto"><span class="badge badge-success">Edit Foto</span></a>
+					</div>
 					<h5 class="text-center mt-4"><?php echo $dataMember['nama']; ?></h5>
 					<p class="text-center mb-5"><?php echo $dataMember['bio']; ?></p>
 					<p class="text-center"><?php if ($dataMember['lokasi'] == "") echo "Mohon isi alamat Anda. Klik Sunting Profil";
@@ -39,7 +42,11 @@
 							<h6>Jumlah pendapatan</h6>
 						</div>
 						<div class="col">
-							<p class="float-right">Teks 1</p>
+							<?php $totalPendapatan = 0;
+							foreach ($jumlahPendapatan as $jmlp) {
+								$totalPendapatan += $jmlp['pendapatan'];
+							} ?>
+							<p class="float-right">Rp<?php echo $totalPendapatan; ?></p>
 						</div>
 					</div>
 					<div class="row mt-2 ">
@@ -47,7 +54,11 @@
 							<h6>Jumlah rating</h6>
 						</div>
 						<div class="col">
-							<p class="float-right">Teks 1</p>
+							<?php $totalNilai = 0;
+							foreach ($jumlahNilai as $jmln) {
+								$totalNilai += $jmln['nilai'];
+							} ?>
+							<p class="float-right"><?php echo $totalNilai / count($jumlahNilai); ?>/5</p>
 						</div>
 					</div>
 				</div>

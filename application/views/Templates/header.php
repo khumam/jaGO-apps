@@ -24,6 +24,10 @@
 	<!-- <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css"> -->
 	<link rel="stylesheet" href="<?php echo base_url('webassets/plugin/openlayer/ol.css'); ?>" type="text/css">
 
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://unpkg.com/multiple-select@1.3.1/dist/multiple-select.min.css">
+
+	<link rel="stylesheet" href="<?php echo base_url('webassets/plugin/picker/picker.css'); ?>" type="text/css">
 
 
 	<!-- Title -->
@@ -74,5 +78,5 @@
 	<?php endif; ?>
 
 	<?php if ($this->session->flashdata('success')) : ?>
-			<p class=" data-success" data-success="<?php echo $this->session->flashdata('success'); ?>"></div>
+							<p class=" data-success" data-success="<?php echo $this->session->flashdata('success'); ?>"></div>
 	<?php endif; ?>

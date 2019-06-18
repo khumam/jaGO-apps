@@ -124,15 +124,69 @@ class Home extends CI_Controller
             $update = $this->Member_model->updateMemberData();
             if ($update == true) {
                 $this->session->set_flashdata('success', 'Data berhasil dirubah');
-                redirect('dashboard');
+                if ($this->session->userdata('role') == 2) :
+                    redirect('dashboard');
+                else :
+                    redirect('dashboard/guru');
+                endif;
             }
             if ($update == false) {
                 $this->session->set_flashdata('danger', 'Maaf ada kesalahan update data');
-                redirect('dashboard');
+                if ($this->session->userdata('role') == 2) :
+                    redirect('dashboard');
+                else :
+                    redirect('dashboard/guru');
+                endif;
             }
         } else {
             $this->session->set_flashdata('danger', 'Maaf ada kesalahan update data. Periksa kembali password Anda');
-            redirect('dashboard');
+            if ($this->session->userdata('role') == 2) :
+                redirect('dashboard');
+            else :
+                redirect('dashboard/guru');
+            endif;
+        }
+    }
+
+    public function uploadFoto()
+    {
+        $config['upload_path']          = './webassets/userimage/';
+        $config['allowed_types']        = 'jpeg|jpg|png';
+        $config['max_width']            = 1024;
+        $config['max_height']           = 1024;
+        $config['encrypt_name']         = true;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('fotoProfil')) {
+            $this->session->set_flashdata('danger', 'Gagal upload foto. Pastikan format jpg|png|jpeg. Max 1024x1024');
+            if ($this->session->userdata('role') == 2) {
+                redirect('dashboard');
+            }
+            if ($this->session->userdata('role') == 3) {
+                redirect('dashboard/guru');
+            }
+        } else {
+            $namaFile = $this->upload->data('file_name');
+            $upload = $this->Member_model->updateMemberFoto($namaFile);
+            if ($upload) {
+                $this->session->set_flashdata('success', 'Berhasil Upload Foto');
+                if ($this->session->userdata('role') == 2) {
+                    redirect('dashboard');
+                }
+                if ($this->session->userdata('role') == 3) {
+                    redirect('dashboard/guru');
+                }
+            }
+            if (!$upload) {
+                $this->session->set_flashdata('danger', 'Gagal upload foto.Silahkan ulangi lagi');
+                if ($this->session->userdata('role') == 2) {
+                    redirect('dashboard');
+                }
+                if ($this->session->userdata('role') == 3) {
+                    redirect('dashboard/guru');
+                }
+            }
         }
     }
 

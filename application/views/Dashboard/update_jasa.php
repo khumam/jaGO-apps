@@ -23,7 +23,7 @@
             <div class="col-6">
                 <label for="jam" class="mt-3">Jam (Jam:Menit)</label><br>
                 <?php if (form_error('jam')) echo form_error('jam'); ?>
-                <input id="jam" name="jam" placeholder="Contoh 13.00 - 14.00" class="noRadius form-control" value="<?php echo $jasaData[0]['jam']; ?>">
+                <input id="jam3" name="jam" placeholder="Contoh 13.00 - 14.00" class="noRadius form-control" value="<?php echo $jasaData[0]['jam']; ?>">
 
             </div>
         </div>
