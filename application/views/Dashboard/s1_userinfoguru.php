@@ -55,10 +55,12 @@
 						</div>
 						<div class="col">
 							<?php $totalNilai = 0;
-							foreach ($jumlahNilai as $jmln) {
-								$totalNilai += $jmln['nilai'];
-							} ?>
-							<p class="float-right"><?php echo $totalNilai / count($jumlahNilai); ?>/5</p>
+							if ($jumlahNilai) {
+								foreach ($jumlahNilai as $jmln) {
+									$totalNilai += $jmln['nilai'];
+								} ?>
+								<p class="float-right"><?php echo $totalNilai / count($jumlahNilai); ?>/5</p>
+							<?php } else { ?><p class="float-right">Belum ada rating</p><?php } ?>
 						</div>
 					</div>
 				</div>
